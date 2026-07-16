@@ -1,0 +1,99 @@
+{
+  "common": {
+    "buy": "Order now",
+    "search": "Search",
+    "contact": "Contact",
+    "close": "Close",
+    "language": "Language"
+  },
+  "navbar": {
+    "home": "Home",
+    "products": "Products",
+    "about": "About us",
+    "gallery": "Gallery",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "Premium ribbons #1 in Uzbekistan",
+    "title": "Modern and high-quality ribbons for graduates!",
+    "description": "Make your graduation unforgettable! Order premium ribbons made from atlas and quality materials with fast courier delivery across Uzbekistan.",
+    "ctaPrimary": "Order now",
+    "ctaSecondary": "View products",
+    "stats": {
+      "customers": "Our customers",
+      "institutions": "Educational institutions",
+      "regions": "Across regions",
+      "warranty": "Guaranteed quality"
+    }
+  },
+  "products": {
+    "title": "Our premium ribbons",
+    "subtitle": "We have curated the most beautiful colors and high-quality fabrics for you. You can search by color and name.",
+    "filter": "Filter:",
+    "searchPlaceholder": "Search ribbon...",
+    "price": "Price:",
+    "quantity": "Quantity:",
+    "order": "Order now",
+    "notFoundTitle": "No products found",
+    "notFoundDescription": "Sorry, no products match your search or filter selection. Please try another keyword.",
+    "clear": "Clear catalog"
+  },
+  "about": {
+    "eyebrow": "Our advantages",
+    "title": "Why choose us?",
+    "description": "We consider it our duty to provide every graduate with the most beautiful and high-quality ribbons for their special day. Our years of experience prove this.",
+    "guarantee": "Guaranteed service"
+  },
+  "gallery": {
+    "eyebrow": "Gallery",
+    "title": "Photos from our customers",
+    "description": "Bright moments from festive days of groups, classmates, and students who ordered from us across the country.",
+    "caption": "The joy of real graduates"
+  },
+  "reviews": {
+    "eyebrow": "What our customers say",
+    "title": "What our graduates say?",
+    "description": "Every customer's opinion is very important to us. Below you can read the sincere feedback of graduates who acquired ribbons through us.",
+    "summaryTitle": "100% positive results",
+    "summaryDescription": "Thanks to quality ribbons and proper service, we consistently receive top ratings.",
+    "cta": "Order yours too"
+  },
+  "faq": {
+    "eyebrow": "Frequently asked questions",
+    "title": "Frequently asked questions",
+    "description": "All answers about the order process, payments, quality guarantees, and delivery are here."
+  },
+  "contact": {
+    "eyebrow": "Contacts",
+    "title": "Get in touch",
+    "description": "Do you have questions or need help with an order? Call us or write through our social media.",
+    "detailsTitle": "Contact information",
+    "addressTitle": "Our office",
+    "address": "Republic of Uzbekistan, Tashkent city, Chilonzor district, Bunyodkor street, 24.",
+    "mapBadge": "📍 Delivery across Tashkent is free!"
+  },
+  "footer": {
+    "quickLinks": "Quick links",
+    "contact": "Contact",
+    "supportText": "Premium and high-quality graduation ribbons in Uzbekistan. Let’s make your graduation unforgettable and luxurious!",
+    "contactEmail": "For cooperation:",
+    "privacy": "Privacy policy",
+    "terms": "Terms of use",
+    "rights": "All rights reserved"
+  },
+  "modal": {
+    "title": "Formalization",
+    "description": "Fill in the details to place a ribbon order",
+    "fullName": "Your full name *",
+    "phone": "Your phone number *",
+    "institution": "School or university *",
+    "group": "Class or course *",
+    "product": "Ribbon type *",
+    "quantity": "Quantity (pcs) *",
+    "submit": "Order",
+    "success": "Your order has been sent successfully.",
+    "successSimulated": "Your order has been sent successfully. (Simulation)",
+    "error": "An error occurred while submitting the order. Please try again."
+  }
+}

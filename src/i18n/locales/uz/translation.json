@@ -1,0 +1,99 @@
+{
+  "common": {
+    "buy": "Buyurtma berish",
+    "search": "Qidirish",
+    "contact": "Kontakt",
+    "close": "Yopish",
+    "language": "Til"
+  },
+  "navbar": {
+    "home": "Bosh sahifa",
+    "products": "Mahsulotlar",
+    "about": "Biz haqimizda",
+    "gallery": "Galereya",
+    "faq": "FAQ",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "badge": "O'zbekistonda 1-raqamli premium lentalar",
+    "title": "Bitiruvchilar uchun zamonaviy va sifatli lentalar!",
+    "description": "Bitiruv kechangizni unutilmas qiling! O'zbekiston bo'ylab eng tezkor kuryerlik xizmati bilan atlas va premium materialdan tayyorlangan mukammal lentalarni buyurtma bering.",
+    "ctaPrimary": "Hozir buyurtma berish",
+    "ctaSecondary": "Mahsulotlarni ko'rish",
+    "stats": {
+      "customers": "Mijozlarimiz",
+      "institutions": "Ta'lim maskanlari",
+      "regions": "Viloyatlar bo'ylab",
+      "warranty": "Kafolatlangan sifat"
+    }
+  },
+  "products": {
+    "title": "Bizning premium lentalarimiz",
+    "subtitle": "Siz uchun eng chiroyli ranglar va yuqori sifatli matolardan lentalarni saralab oldik. Rang va nomi bo'yicha qidirishingiz mumkin.",
+    "filter": "Filtr:",
+    "searchPlaceholder": "Lentani qidirish...",
+    "price": "Narxi:",
+    "quantity": "Soni:",
+    "order": "Buyurtma berish",
+    "notFoundTitle": "Mahsulot topilmadi",
+    "notFoundDescription": "Kechirasiz, siz kiritgan qidiruv matni yoki filtr bo'yicha hech qanday mahsulot topilmadi. Iltimos, boshqa kalit so'zlarni sinab ko'ring.",
+    "clear": "Katalogni tozalash"
+  },
+  "about": {
+    "eyebrow": "Bizning ustunliklarimiz",
+    "title": "Nima uchun aynan bizni tanlashadi?",
+    "description": "Biz har bir bitiruvchining quvonchli kunida ularga eng go'zal va sifatli lentalarni taqdim etishni o'z burchimiz deb bilamiz. Yillar davomida orttirilgan tajribamiz buni isbotlaydi.",
+    "guarantee": "Kafolatlangan xizmat"
+  },
+  "gallery": {
+    "eyebrow": "Galereya",
+    "title": "Mijozlarimizdan fotolavhalar",
+    "description": "Butun respublika bo'ylab bizdan buyurtma bergan guruhlar, sinfdoshlar va talabalarning tantanali kunlaridan yorqin lavhalar.",
+    "caption": "Haqiqiy bitiruvchilar quvonchi"
+  },
+  "reviews": {
+    "eyebrow": "Mijozlarimiz fikrlari",
+    "title": "Bitiruvchilarimiz nima deydi?",
+    "description": "Biz uchun har bir mijozning fikri o'ta muhim. Quyida biz orqali lentalarga ega bo'lgan bitiruvchilarning samimiy mulohazalari bilan tanishishingiz mumkin.",
+    "summaryTitle": "Yuz foiz ijobiy natijalar",
+    "summaryDescription": "Sifatli lentalar va to'g'ri xizmat ko'rsatish tufayli doimiy a'lo darajadagi baholar.",
+    "cta": "Siz ham buyurtma bering"
+  },
+  "faq": {
+    "eyebrow": "Ko'p so'raladigan savollar",
+    "title": "Tez-tez beriladigan savollar",
+    "description": "Buyurtma jarayonlari, to'lovlar, sifat kafolati va yetkazib berish xizmatiga oid barcha javoblar shu yerda."
+  },
+  "contact": {
+    "eyebrow": "Kontaktlar",
+    "title": "Biz bilan bog'lanish",
+    "description": "Savollaringiz bormi yoki buyurtma bo'yicha yordam kerakmi? Bizga qo'ng'iroq qiling yoki ijtimoiy tarmoqlarimiz orqali yozing.",
+    "detailsTitle": "Aloqa ma'lumotlari",
+    "addressTitle": "Bizning bosh ofisimiz",
+    "address": "O'zbekiston Respublikasi, Toshkent shahri, Chilonzor tumani, Bunyodkor ko'chasi, 24-uy.",
+    "mapBadge": "📍 Toshkent shahri bo'ylab yetkazib berish bepul!"
+  },
+  "footer": {
+    "quickLinks": "Tezkor havolalar",
+    "contact": "Bog'lanish",
+    "supportText": "O'zbekistondagi eng premium va sifatli bitiruv lentalari. Biz bilan maktab, guruh yoki universitet bitiruv marosimingizni unutilmas va hashamatli qiling!",
+    "contactEmail": "Hamkorlik uchun:",
+    "privacy": "Maxfiylik siyosati",
+    "terms": "Foydalanish shartlari",
+    "rights": "Barcha huquqlar himoyalangan"
+  },
+  "modal": {
+    "title": "Rasmiylashtirish",
+    "description": "Lenta buyurtma qilish uchun quyidagi ma'lumotlarni to'ldiring",
+    "fullName": "Ism familiyangiz *",
+    "phone": "Telefon raqamingiz *",
+    "institution": "Maktab yoki universitet *",
+    "group": "Sinf yoki kurs *",
+    "product": "Lenta turi *",
+    "quantity": "Soni (dona) *",
+    "submit": "Buyurtma qilish",
+    "success": "Buyurtmangiz muvaffaqiyatli yuborildi.",
+    "successSimulated": "Buyurtmangiz muvaffaqiyatli yuborildi. (Simulyatsiya)",
+    "error": "Buyurtma yuborishda xatolik yuz berdi. Qayta urinib ko'ring."
+  }
+}

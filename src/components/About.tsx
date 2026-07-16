@@ -1,0 +1,101 @@
+import { motion } from "motion/react";
+import { Shield, Sparkles, Tag, Zap, Palette, MapPin } from "lucide-react";
+import { useTranslation } from "react-i18next";
+
+export default function About() {
+  const { t } = useTranslation();
+  const advantages = [
+    {
+      id: "adv-1",
+      icon: <Shield className="w-5 h-5 text-gold" />,
+      title: "Sifatli mahsulot",
+      desc: "Lentalarimiz eng yuqori sifatli atlas va shoyi matolardan tayyorlanadi. Harflar o'chmaydi va yiltiramaydi.",
+    },
+    {
+      id: "adv-2",
+      icon: <Tag className="w-5 h-5 text-gold" />,
+      title: "Hamyonbop narx",
+      desc: "Bozordagi eng hamyonbop narxlar va guruhli buyurtmalar uchun maxsus ulgurji chegirmalar taqdim etamiz.",
+    },
+    {
+      id: "adv-3",
+      icon: <Zap className="w-5 h-5 text-gold" />,
+      title: "Tez yetkazib berish",
+      desc: "Buyurtmalar 1-3 kun ichida tayyorlanadi va manzilingizga kechiktirilmasdan yetkazib beriladi.",
+    },
+    {
+      id: "adv-4",
+      icon: <Palette className="w-5 h-5 text-gold" />,
+      title: "Individual buyurtmalar",
+      desc: "Sizning xohishingizga ko'ra har qanday yozuv, maktab ramzi yoki shaxsiy ismlarni yozib bera olamiz.",
+    },
+    {
+      id: "adv-5",
+      icon: <MapPin className="w-5 h-5 text-gold" />,
+      title: "O'zbekiston bo'ylab yetkazib berish",
+      desc: "Respublikaning istalgan viloyat, shahar yoki chekka tumanlarigacha xavfsiz yetkazish yo'lga qo'yilgan.",
+    },
+  ];
+
+  return (
+    <section
+      id="biz-haqimizda"
+      className="py-24 bg-white border-b border-gold/10"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <span className="text-gold font-bold text-xs uppercase tracking-widest">
+              {t("about.eyebrow")}
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold font-serif text-editorial-dark mt-2">
+              {t("about.title")}
+            </h2>
+            <div className="w-16 h-0.5 bg-gold mx-auto mt-4" />
+            <p className="text-gray-600 mt-4 leading-relaxed font-light text-sm sm:text-base">
+              {t("about.description")}
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Grid Advantages */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {advantages.map((adv, index) => (
+            <motion.div
+              key={adv.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -5 }}
+              className="p-6 rounded-3xl border border-gold/10 bg-warm-bg/25 shadow-sm hover:shadow-xl hover:border-gold/30 transition-all flex flex-col justify-between"
+              id={adv.id}
+            >
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-gold/10 flex items-center justify-center mb-5 border border-gold/10">
+                  {adv.icon}
+                </div>
+                <h3 className="text-lg font-serif font-bold text-editorial-dark mb-2">
+                  {adv.title}
+                </h3>
+                <p className="text-xs text-gray-500 leading-relaxed font-light">
+                  {adv.desc}
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-gold/5 flex items-center text-gold text-[10px] font-bold uppercase tracking-widest gap-1.5">
+                {t("about.guarantee")}{" "}
+                <Sparkles className="w-3 h-3 text-gold" />
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
