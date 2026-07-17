@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "motion/react";
 import { Award, ShieldCheck, Truck, Users } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import heroImage from "../../assets/img3.jpg";
 
 interface HeroProps {
   onOpenOrderModal: () => void;
@@ -150,7 +151,7 @@ export default function Hero({ onOpenOrderModal }: HeroProps) {
               id="hero-image-showcase"
             >
               <img
-                src="/assets/img3.jpg"
+                src={heroImage}
                 alt="Premium bitiruvchi lentasi va qalpoq"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
                 referrerPolicy="no-referrer"
