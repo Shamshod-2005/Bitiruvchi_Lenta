@@ -150,7 +150,7 @@ export default function Hero({ onOpenOrderModal }: HeroProps) {
               id="hero-image-showcase"
             >
               <img
-                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800&auto=format&fit=crop"
+                src="/assets/img3.jpg"
                 alt="Premium bitiruvchi lentasi va qalpoq"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
                 referrerPolicy="no-referrer"

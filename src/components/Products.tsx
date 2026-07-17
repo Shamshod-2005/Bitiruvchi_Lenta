@@ -1,16 +1,15 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
 import {
-  Search,
-  ShoppingBag,
-  Plus,
-  Minus,
   Filter,
-  Sparkles,
+  Minus,
+  Plus,
+  Search,
+  ShoppingBag
 } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Product } from "../types";
 import { products } from "../data/products";
+import { Product } from "../types";
 
 interface ProductsProps {
   onOrderProduct: (product: Product, quantity: number) => void;
