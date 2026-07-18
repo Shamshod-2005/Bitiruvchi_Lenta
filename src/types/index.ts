@@ -6,7 +6,7 @@ export interface Product {
   colorHex: string;
   description: string;
   image: string;
-  label?: 'Eng mashhur' | 'Premium' | 'Yangi';
+  label?: "Eng mashhur" | "Premium" | "Yangi";
 }
 
 export interface Review {
@@ -41,4 +41,13 @@ export interface OrderFormData {
   productName: string;
   quantity: number;
   comment?: string;
+}
+
+export interface Template {
+  id: string;
+  title: string;
+  category: "Klassik" | "Premium" | "Zamonaviy";
+  image: string;
+  popular: boolean;
+  description: string;
 }

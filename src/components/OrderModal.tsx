@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { motion, AnimatePresence } from "motion/react";
 import { X, Check, AlertTriangle, Loader2 } from "lucide-react";
-import { OrderFormData, Product } from "../types";
+import { useTranslation } from "react-i18next";
+import { OrderFormData, Product, Template } from "../types";
 import { products } from "../data/products";
 
 interface OrderModalProps {
   isOpen: boolean;
   onClose: () => void;
   selectedProduct: Product | null;
+  selectedTemplate?: Template | null;
   initialQuantity?: number;
   onSuccessToast: (message: string, type: "success" | "error") => void;
 }
@@ -34,9 +36,11 @@ export default function OrderModal({
   isOpen,
   onClose,
   selectedProduct,
+  selectedTemplate,
   initialQuantity = 1,
   onSuccessToast,
 }: OrderModalProps) {
+  const { t } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const {
@@ -80,12 +84,16 @@ export default function OrderModal({
         group: "",
         region: "",
         address: "",
-        productName: selectedProduct ? selectedProduct.name : products[0].name,
+        productName: selectedTemplate
+          ? `Shablon #${selectedTemplate.id} — ${selectedTemplate.title} (${selectedTemplate.category})`
+          : selectedProduct
+            ? selectedProduct.name
+            : products[0].name,
         quantity: initialQuantity,
         comment: "",
       });
     }
-  }, [isOpen, selectedProduct, initialQuantity, reset]);
+  }, [isOpen, selectedProduct, selectedTemplate, initialQuantity, reset]);
 
   const onSubmit = async (data: OrderFormData) => {
     setIsSubmitting(true);
@@ -95,13 +103,18 @@ export default function OrderModal({
       (import.meta as any).env.VITE_CHAT_ID?.trim() || "-1003927019373";
 
     // Format the telegram message beautifully
+    const templateContext = selectedTemplate
+      ? `
+🖼 <b>Tanlangan shablon:</b> #${selectedTemplate.id} — ${selectedTemplate.title} (${selectedTemplate.category})`
+      : "";
+
     const telegramMessage = `🎓 <b>YANGI BUYURTMA</b>
 
 👤 <b>Ism:</b> ${data.fullName}
 📞 <b>Telefon:</b> ${data.phone}
 🏫 <b>Ta'lim muassasasi:</b> ${data.institution}
 🎓 <b>Sinf yoki kurs:</b> ${data.group}
-🎗 <b>Mahsulot:</b> ${data.productName}
+🎗 <b>Mahsulot:</b> ${data.productName}${templateContext}
 📦 <b>Soni:</b> ${data.quantity} dona
 💰 <b>Umumiy narxi:</b> ${totalPrice.toLocaleString("uz-UZ")} so'm
 📍 <b>Viloyat:</b> ${data.region}
@@ -189,24 +202,24 @@ export default function OrderModal({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: "spring", duration: 0.5 }}
-            className="relative w-full max-w-2xl bg-white rounded-[2rem] shadow-2xl overflow-hidden z-10 flex flex-col max-h-[90vh] border border-gold/15"
+            className="relative w-full max-w-2xl bg-white rounded-4xl shadow-2xl overflow-hidden z-10 flex flex-col max-h-[90vh] border border-gold/15"
             id="order-modal-box"
           >
             {/* Header */}
-            <div className="p-6 border-b border-gold/10 flex justify-between items-center bg-gradient-to-r from-gold/10 via-warm-bg/50 to-white">
+            <div className="p-6 border-b border-gold/10 flex justify-between items-center bg-linear-to-r from-gold/10 via-warm-bg/50 to-white">
               <div>
                 <h3 className="text-xl font-bold text-editorial-dark font-serif flex items-center gap-2">
-                  <span className="text-gold">🎓</span> Rasmiylashtirish
+                  <span className="text-gold">🎓</span> {t("modal.title")}
                 </h3>
                 <p className="text-xs text-gray-500 mt-1">
-                  Lenta buyurtma qilish uchun quyidagi ma'lumotlarni to'ldiring
+                  {t("modal.description")}
                 </p>
               </div>
               <button
                 onClick={onClose}
                 className="p-2 rounded-full hover:bg-gold/10 text-gray-400 hover:text-gold transition-colors"
                 id="close-modal-btn"
-                aria-label="Yopish"
+                aria-label={t("common.close")}
               >
                 <X className="w-5 h-5" />
               </button>
@@ -218,6 +231,25 @@ export default function OrderModal({
               className="overflow-y-auto p-6 space-y-5 flex-1"
               id="order-modal-form"
             >
+              {selectedTemplate && (
+                <div className="rounded-3xl border border-gold/15 bg-warm-bg/70 p-4">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-gold">
+                    Tanlangan shablon
+                  </p>
+                  <div className="mt-2 flex flex-wrap items-center gap-2">
+                    <span className="rounded-full bg-white px-3 py-1 text-sm font-semibold text-editorial-dark shadow-sm">
+                      #{selectedTemplate.id}
+                    </span>
+                    <span className="text-sm font-semibold text-editorial-dark">
+                      {selectedTemplate.title}
+                    </span>
+                    <span className="rounded-full border border-gold/10 bg-white px-3 py-1 text-xs font-medium text-gray-600">
+                      {selectedTemplate.category}
+                    </span>
+                  </div>
+                </div>
+              )}
+
               {/* Product Info Summary Box */}
               {currentProduct && (
                 <div className="bg-gold/5 border border-gold/15 rounded-3xl p-4 flex items-center gap-4">
@@ -232,18 +264,20 @@ export default function OrderModal({
                       {currentProduct.name}
                     </h4>
                     <p className="text-xs text-gray-500">
-                      Rangi: {currentProduct.color}
+                      {t("modal.productColor")} {currentProduct.color}
                     </p>
                     <p className="text-xs font-bold text-gold mt-1 uppercase tracking-wider">
-                      {currentProduct.price.toLocaleString("uz-UZ")} so'm / dona
+                      {currentProduct.price.toLocaleString("uz-UZ")}{" "}
+                      {t("modal.pricePerUnit")}
                     </p>
                   </div>
                   <div className="text-right">
                     <p className="text-[10px] text-gray-400 uppercase tracking-wider font-bold">
-                      Umumiy summa:
+                      {t("modal.totalAmount")}
                     </p>
                     <p className="text-base sm:text-lg font-serif font-bold text-gold">
-                      {totalPrice.toLocaleString("uz-UZ")} so'm
+                      {totalPrice.toLocaleString("uz-UZ")}{" "}
+                      {t("common.currency")}
                     </p>
                   </div>
                 </div>
@@ -253,18 +287,18 @@ export default function OrderModal({
                 {/* Full name */}
                 <div>
                   <label className="block text-xs font-bold text-gray-700 uppercase tracking-widest mb-1.5">
-                    Ism familiyangiz *
+                    {t("modal.fullName")}
                   </label>
                   <input
                     type="text"
-                    placeholder="Masalan: Sardorbek Rahimov"
+                    placeholder={t("modal.namePlaceholder")}
                     className={`w-full px-4 py-2.5 rounded-2xl border text-sm focus:outline-none focus:ring-2 transition-all ${
                       errors.fullName
                         ? "border-red-300 focus:ring-red-200"
                         : "border-gold/25 focus:border-gold focus:ring-gold/10"
                     }`}
                     {...register("fullName", {
-                      required: "Ism familiyangizni kiriting",
+                      required: t("modal.errors.fullNameRequired"),
                     })}
                     id="input-fullname"
                   />
@@ -279,21 +313,21 @@ export default function OrderModal({
                 {/* Phone number */}
                 <div>
                   <label className="block text-xs font-bold text-gray-700 uppercase tracking-widest mb-1.5">
-                    Telefon raqamingiz *
+                    {t("modal.phone")}
                   </label>
                   <input
                     type="text"
-                    placeholder="+998901234567"
+                    placeholder={t("modal.phonePlaceholder")}
                     className={`w-full px-4 py-2.5 rounded-2xl border text-sm focus:outline-none focus:ring-2 transition-all ${
                       errors.phone
                         ? "border-red-300 focus:ring-red-200"
                         : "border-gold/25 focus:border-gold focus:ring-gold/10"
                     }`}
                     {...register("phone", {
-                      required: "Telefon raqamingizni kiriting",
+                      required: t("modal.errors.phoneRequired"),
                       pattern: {
                         value: /^\+998\d{9}$/,
-                        message: "Telefon formati: +998901234567",
+                        message: t("modal.errors.phonePattern"),
                       },
                     })}
                     id="input-phone"
@@ -311,18 +345,18 @@ export default function OrderModal({
                 {/* School or University */}
                 <div>
                   <label className="block text-xs font-bold text-gray-700 uppercase tracking-widest mb-1.5">
-                    Maktab yoki universitet *
+                    {t("modal.institution")}
                   </label>
                   <input
                     type="text"
-                    placeholder="Masalan: 144-maktab yoki TUIT"
+                    placeholder={t("modal.institutionPlaceholder")}
                     className={`w-full px-4 py-2.5 rounded-2xl border text-sm focus:outline-none focus:ring-2 transition-all ${
                       errors.institution
                         ? "border-red-300 focus:ring-red-200"
                         : "border-gold/25 focus:border-gold focus:ring-gold/10"
                     }`}
                     {...register("institution", {
-                      required: "Ta'lim muassasasini kiriting",
+                      required: t("modal.errors.institutionRequired"),
                     })}
                     id="input-institution"
                   />
@@ -337,18 +371,18 @@ export default function OrderModal({
                 {/* Class or Course */}
                 <div>
                   <label className="block text-xs font-bold text-gray-700 uppercase tracking-widest mb-1.5">
-                    Sinf yoki kurs *
+                    {t("modal.group")}
                   </label>
                   <input
                     type="text"
-                    placeholder="Masalan: 11-A sinf yoki 4-kurs"
+                    placeholder={t("modal.groupPlaceholder")}
                     className={`w-full px-4 py-2.5 rounded-2xl border text-sm focus:outline-none focus:ring-2 transition-all ${
                       errors.group
                         ? "border-red-300 focus:ring-red-200"
                         : "border-gold/25 focus:border-gold focus:ring-gold/10"
                     }`}
                     {...register("group", {
-                      required: "Sinf yoki kursingizni kiriting",
+                      required: t("modal.errors.groupRequired"),
                     })}
                     id="input-group"
                   />
@@ -366,18 +400,19 @@ export default function OrderModal({
                 {/* Product Name */}
                 <div>
                   <label className="block text-xs font-bold text-gray-700 uppercase tracking-widest mb-1.5">
-                    Lenta turi *
+                    {t("modal.product")}
                   </label>
                   <select
                     className="w-full px-4 py-2.5 rounded-2xl border border-gold/25 text-sm focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/10 transition-all bg-white"
                     {...register("productName", {
-                      required: "Lenta turini tanlang",
+                      required: t("modal.errors.productRequired"),
                     })}
                     id="input-product"
                   >
                     {products.map((p) => (
                       <option key={p.id} value={p.name}>
-                        {p.name} — {p.price.toLocaleString("uz-UZ")} so'm
+                        {p.name} — {p.price.toLocaleString("uz-UZ")}{" "}
+                        {t("common.currency")}
                       </option>
                     ))}
                   </select>
@@ -386,7 +421,7 @@ export default function OrderModal({
                 {/* Quantity */}
                 <div>
                   <label className="block text-xs font-bold text-gray-700 uppercase tracking-widest mb-1.5">
-                    Soni (dona) *
+                    {t("modal.quantity")}
                   </label>
                   <div className="flex items-center gap-2">
                     <button
@@ -408,9 +443,12 @@ export default function OrderModal({
                           : "border-gold/25 focus:border-gold focus:ring-gold/10"
                       }`}
                       {...register("quantity", {
-                        required: "Lenta sonini kiriting",
+                        required: t("modal.errors.quantityRequired"),
                         valueAsNumber: true,
-                        min: { value: 1, message: "Minimal buyurtma 1 dona" },
+                        min: {
+                          value: 1,
+                          message: t("modal.errors.quantityMin"),
+                        },
                       })}
                       id="input-quantity"
                     />
@@ -438,7 +476,7 @@ export default function OrderModal({
                 {/* Region */}
                 <div>
                   <label className="block text-xs font-bold text-gray-700 uppercase tracking-widest mb-1.5">
-                    Viloyat *
+                    {t("modal.region")}
                   </label>
                   <select
                     className={`w-full px-4 py-2.5 rounded-2xl border text-sm focus:outline-none focus:ring-2 transition-all bg-white ${
@@ -447,11 +485,11 @@ export default function OrderModal({
                         : "border-gold/25 focus:border-gold focus:ring-gold/10"
                     }`}
                     {...register("region", {
-                      required: "Viloyatingizni tanlang",
+                      required: t("modal.errors.regionRequired"),
                     })}
                     id="input-region"
                   >
-                    <option value="">Viloyatni tanlang</option>
+                    <option value="">{t("modal.regionPlaceholder")}</option>
                     {REGIONS.map((reg) => (
                       <option key={reg} value={reg}>
                         {reg}
@@ -469,18 +507,18 @@ export default function OrderModal({
                 {/* Detailed Address */}
                 <div>
                   <label className="block text-xs font-bold text-gray-700 uppercase tracking-widest mb-1.5">
-                    Yetkazish manzili *
+                    {t("modal.address")}
                   </label>
                   <input
                     type="text"
-                    placeholder="Masalan: Chilonzor tumani, 4-daha, 12-uy"
+                    placeholder={t("modal.addressPlaceholder")}
                     className={`w-full px-4 py-2.5 rounded-2xl border text-sm focus:outline-none focus:ring-2 transition-all ${
                       errors.address
                         ? "border-red-300 focus:ring-red-200"
                         : "border-gold/25 focus:border-gold focus:ring-gold/10"
                     }`}
                     {...register("address", {
-                      required: "Yetkazish manzilini kiriting",
+                      required: t("modal.errors.addressRequired"),
                     })}
                     id="input-address"
                   />
@@ -496,10 +534,10 @@ export default function OrderModal({
               {/* Extra comments */}
               <div>
                 <label className="block text-xs font-bold text-gray-700 uppercase tracking-widest mb-1.5">
-                  Qo'shimcha izohlar (ixtiyoriy)
+                  {t("modal.comment")}
                 </label>
                 <textarea
-                  placeholder="Lentaga yoziladigan ismlar ro'yxatini yoki maxsus xohishlaringizni shu yerda qoldirishingiz mumkin..."
+                  placeholder={t("modal.commentPlaceholder")}
                   rows={3}
                   className="w-full px-4 py-3 rounded-2xl border border-gold/25 text-sm focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/10 transition-all resize-none"
                   {...register("comment")}
@@ -509,9 +547,7 @@ export default function OrderModal({
 
               {/* Notice */}
               <p className="text-[10px] text-gray-400 leading-relaxed font-light">
-                * Belgisi qo'yilgan maydonlarni to'ldirish majburiydir.
-                Buyurtmangiz yuborilgandan so'ng, operatorimiz 15 daqiqa ichida
-                buyurtmani tasdiqlash uchun siz bilan bog'lanadi.
+                {t("modal.requiredHint")}
               </p>
 
               {/* Footer Buttons */}
@@ -522,7 +558,7 @@ export default function OrderModal({
                   className="px-5 py-2.5 rounded-full border border-gold/20 text-xs font-bold uppercase tracking-wider text-gray-700 hover:bg-gold/5 transition-colors focus:outline-none cursor-pointer"
                   id="cancel-order-btn"
                 >
-                  Bekor qilish
+                  {t("modal.cancel")}
                 </button>
                 <button
                   type="submit"
@@ -533,11 +569,11 @@ export default function OrderModal({
                   {isSubmitting ? (
                     <>
                       <Loader2 className="w-4 h-4 animate-spin" />{" "}
-                      Yuborilmoqda...
+                      {t("modal.submitting")}
                     </>
                   ) : (
                     <>
-                      <Check className="w-4 h-4" /> Buyurtmani tasdiqlash
+                      <Check className="w-4 h-4" /> {t("modal.confirm")}
                     </>
                   )}
                 </button>

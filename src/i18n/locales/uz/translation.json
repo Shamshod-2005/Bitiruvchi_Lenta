@@ -4,7 +4,8 @@
     "search": "Qidirish",
     "contact": "Kontakt",
     "close": "Yopish",
-    "language": "Til"
+    "language": "Til",
+    "currency": "so'm"
   },
   "navbar": {
     "home": "Bosh sahifa",
@@ -12,7 +13,10 @@
     "about": "Biz haqimizda",
     "gallery": "Galereya",
     "faq": "FAQ",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "menuToggle": "Menuni ochish/yopish",
+    "mobileMenuTitle": "Navigatsiya",
+    "deliveryText": "O'zbekiston bo'ylab tezkor yetkazib berish"
   },
   "hero": {
     "badge": "O'zbekistonda 1-raqamli premium lentalar",
@@ -25,7 +29,11 @@
       "institutions": "Ta'lim maskanlari",
       "regions": "Viloyatlar bo'ylab",
       "warranty": "Kafolatlangan sifat"
-    }
+    },
+    "imageBadge": "Premium sifat",
+    "imageTitle": "Oltin yozuvli atlas lentalar",
+    "imageDescription": "Har bir buyurtmaga individual yondashilgan holda, sifatli yaltiroq va bardoshli matnlardan tayyorlanadi.",
+    "imageAlt": "Premium bitiruvchi lentasi va qalpoq"
   },
   "products": {
     "title": "Bizning premium lentalarimiz",
@@ -35,6 +43,18 @@
     "price": "Narxi:",
     "quantity": "Soni:",
     "order": "Buyurtma berish",
+    "sectionLabel": "Mahsulotlar katalogi",
+    "colorLabel": "Rangi:",
+    "swatchTitle": "Asosiy rang:",
+    "decrease": "Kamaytirish",
+    "increase": "Ko'paytirish",
+    "filters": {
+      "all": "Barchasi",
+      "red": "Qizil",
+      "blue": "Ko'k",
+      "burgundy": "Bordo",
+      "individual": "Individual"
+    },
     "notFoundTitle": "Mahsulot topilmadi",
     "notFoundDescription": "Kechirasiz, siz kiritgan qidiruv matni yoki filtr bo'yicha hech qanday mahsulot topilmadi. Iltimos, boshqa kalit so'zlarni sinab ko'ring.",
     "clear": "Katalogni tozalash"
@@ -43,13 +63,42 @@
     "eyebrow": "Bizning ustunliklarimiz",
     "title": "Nima uchun aynan bizni tanlashadi?",
     "description": "Biz har bir bitiruvchining quvonchli kunida ularga eng go'zal va sifatli lentalarni taqdim etishni o'z burchimiz deb bilamiz. Yillar davomida orttirilgan tajribamiz buni isbotlaydi.",
-    "guarantee": "Kafolatlangan xizmat"
+    "guarantee": "Kafolatlangan xizmat",
+    "advantages": {
+      "quality": {
+        "title": "Sifatli mahsulot",
+        "description": "Lentalarimiz eng yuqori sifatli atlas va shoyi matolardan tayyorlanadi. Harflar o'chmaydi va yaltiramaydi."
+      },
+      "price": {
+        "title": "Hamyonbop narx",
+        "description": "Bozordagi eng hamyonbop narxlar va guruhli buyurtmalar uchun maxsus ulgurji chegirmalar taqdim etamiz."
+      },
+      "delivery": {
+        "title": "Tez yetkazib berish",
+        "description": "Buyurtmalar 1-3 kun ichida tayyorlanadi va manzilingizga kechiktirilmasdan yetkazib beriladi."
+      },
+      "custom": {
+        "title": "Individual buyurtmalar",
+        "description": "Sizning xohishingizga ko'ra har qanday yozuv, maktab ramzi yoki shaxsiy ismlarni yozib bera olamiz."
+      },
+      "regions": {
+        "title": "O'zbekiston bo'ylab yetkazib berish",
+        "description": "Respublikaning istalgan viloyat, shahar yoki chekka tumanlarigacha xavfsiz yetkazish yo'lga qo'yilgan."
+      }
+    }
   },
   "gallery": {
     "eyebrow": "Galereya",
     "title": "Mijozlarimizdan fotolavhalar",
     "description": "Butun respublika bo'ylab bizdan buyurtma bergan guruhlar, sinfdoshlar va talabalarning tantanali kunlaridan yorqin lavhalar.",
-    "caption": "Haqiqiy bitiruvchilar quvonchi"
+    "caption": "Haqiqiy bitiruvchilar quvonchi",
+    "categories": {
+      "all": "Barchasi",
+      "ceremony": "Marosim",
+      "school": "Maktab",
+      "product": "Mahsulot",
+      "university": "Universitet"
+    }
   },
   "reviews": {
     "eyebrow": "Mijozlarimiz fikrlari",
@@ -62,7 +111,25 @@
   "faq": {
     "eyebrow": "Ko'p so'raladigan savollar",
     "title": "Tez-tez beriladigan savollar",
-    "description": "Buyurtma jarayonlari, to'lovlar, sifat kafolati va yetkazib berish xizmatiga oid barcha javoblar shu yerda."
+    "description": "Buyurtma jarayonlari, to'lovlar, sifat kafolati va yetkazib berish xizmatiga oid barcha javoblar shu yerda.",
+    "items": {
+      "delivery": {
+        "question": "Buyurtma necha kunda tayyor bo'ladi?",
+        "answer": "Buyurtmalar odatda hajmi va murakkabligiga qarab 1 kundan 3 kungacha bo'lgan muddatda tayyorlanadi. Katta hajmdagi sinf yoki maktab buyurtmalari kelishilgan muddatda tezkor yetkaziladi."
+      },
+      "shipping": {
+        "question": "Yetkazib berish bormi?",
+        "answer": "Ha, butun O'zbekiston bo'ylab yetkazib berish xizmati mavjud. Toshkent shahri bo'ylab kuryer orqali, viloyatlarga esa tezkor pochta xizmatlari (BTS, Fargo) yoki kelishilgan taksi orqali eng qisqa vaqtda yetkaziladi."
+      },
+      "minimum": {
+        "question": "Minimal buyurtma soni qancha?",
+        "answer": "Bizda minimal buyurtma cheklovi yo'q! Siz hatto 1 dona lenta ham buyurtma qilishingiz mumkin. Biroq, sinf yoki guruh bo'lib katta miqdorda (15 donadan ortiq) buyurtma berilganda maxsus chegirmalar mavjud."
+      },
+      "custom": {
+        "question": "Individual dizayn qilish mumkinmi?",
+        "answer": "Albatta! Siz o'zingiz xohlagan matnni (masalan: maktab raqami, sinf harfi, bitiruvchi ismi, yil), mato rangini va yozuv rangini (oltin, kumush, qora va boshqalar) tanlashingiz mumkin. Shuningdek, maxsus logotiplarni ham tushirib beramiz."
+      }
+    }
   },
   "contact": {
     "eyebrow": "Kontaktlar",
@@ -71,7 +138,25 @@
     "detailsTitle": "Aloqa ma'lumotlari",
     "addressTitle": "Bizning bosh ofisimiz",
     "address": "O'zbekiston Respublikasi, Toshkent shahri, Chilonzor tumani, Bunyodkor ko'chasi, 24-uy.",
-    "mapBadge": "📍 Toshkent shahri bo'ylab yetkazib berish bepul!"
+    "mapBadge": "📍 Toshkent shahri bo'ylab yetkazib berish bepul!",
+    "phoneTitle": "Telefon raqamimiz",
+    "phoneValue": "+998 94 011 52 44",
+    "phoneSub": "Operatorlarimiz buyurtmalarni qabul qiladi",
+    "telegramTitle": "Telegram kanalimiz",
+    "telegramValue": "@Angrenlenti",
+    "telegramSub": "Yangi dizaynlar va g'oyalarni kuzating",
+    "instagramTitle": "Instagram sahifamiz",
+    "instagramValue": "@angren.lenti",
+    "instagramSub": "Mijozlarimizdan olingan real rasmlar",
+    "hoursTitle": "Ish tartibi",
+    "hoursValue": "Har kuni 09:00 - 21:00",
+    "hoursSub": "Dam olish kunlarisiz doim xizmatdamiz"
+  },
+  "floating": {
+    "telegram": "Telegram",
+    "instagram": "Instagram",
+    "phone": "Telefon",
+    "scrollToTop": "Tepaga qaytish"
   },
   "footer": {
     "quickLinks": "Tezkor havolalar",
@@ -80,7 +165,12 @@
     "contactEmail": "Hamkorlik uchun:",
     "privacy": "Maxfiylik siyosati",
     "terms": "Foydalanish shartlari",
-    "rights": "Barcha huquqlar himoyalangan"
+    "rights": "Barcha huquqlar himoyalangan",
+    "brandLine": "Bitiruvchi Lentalari",
+    "address": "O'zbekiston, Toshkent viloyati, Angren shahri",
+    "copyright": "Bitiruvchi Lentalari — Barcha huquqlar himoyalangan",
+    "phone": "+998 94 011 52 44",
+    "email": "info@lentalar.uz"
   },
   "modal": {
     "title": "Rasmiylashtirish",
@@ -90,8 +180,56 @@
     "institution": "Maktab yoki universitet *",
     "group": "Sinf yoki kurs *",
     "product": "Lenta turi *",
+    "region": "Viloyat *",
+    "address": "Manzil *",
+    "comment": "Izoh",
     "quantity": "Soni (dona) *",
     "submit": "Buyurtma qilish",
+    "closeLabel": "Yopish",
+    "namePlaceholder": "Masalan: Sardorbek Rahimov",
+    "phonePlaceholder": "+998901234567",
+    "institutionPlaceholder": "Masalan: 144-maktab yoki TUIT",
+    "groupPlaceholder": "Masalan: 11-sinf yoki 2-kurs",
+    "regionPlaceholder": "Viloyatingizni tanlang",
+    "addressPlaceholder": "Masalan: Chilonzor, Bunyodkor ko'chasi",
+    "commentPlaceholder": "Qo'shimcha ma'lumotlar (ixtiyoriy)",
+    "productColor": "Rangi:",
+    "pricePerUnit": "so'm / dona",
+    "totalAmount": "Umumiy summa:",
+    "priceSummary": "Umumiy narx",
+    "requiredHint": "* majburiy maydon",
+    "cancel": "Bekor qilish",
+    "submitting": "Yuborilmoqda...",
+    "confirm": "Buyurtmani tasdiqlash",
+    "errors": {
+      "fullNameRequired": "Ism familiyangizni kiriting",
+      "phoneRequired": "Telefon raqamingizni kiriting",
+      "phonePattern": "Telefon formati: +998901234567",
+      "institutionRequired": "Ta'lim muassasasini kiriting",
+      "groupRequired": "Sinf yoki kursingizni kiriting",
+      "productRequired": "Lenta turini tanlang",
+      "quantityRequired": "Lenta sonini kiriting",
+      "quantityMin": "Minimal buyurtma 1 dona",
+      "regionRequired": "Viloyatingizni tanlang",
+      "addressRequired": "Yetkazish manzilini kiriting",
+      "telegramToken": "Telegram bot token noto'g'ri yoki bot guruhga qo'shilmagan. Token va guruh ID ni tekshiring."
+    },
+    "regions": {
+      "tashkentCity": "Toshkent shahri",
+      "tashkentRegion": "Toshkent viloyati",
+      "andijan": "Andijon viloyati",
+      "bukhara": "Buxoro viloyati",
+      "fergana": "Farg'ona viloyati",
+      "jizzakh": "Jizzax viloyati",
+      "khorezm": "Xorazm viloyati",
+      "namangan": "Namangan viloyati",
+      "navoi": "Navoiy viloyati",
+      "qashqadarya": "Qashqadaryo viloyati",
+      "samarqand": "Samarqand viloyati",
+      "sirdaryo": "Sirdaryo viloyati",
+      "surkhandarya": "Surxondaryo viloyati",
+      "karakalpakstan": "Qoraqalpog'iston Respublikasi"
+    },
     "success": "Buyurtmangiz muvaffaqiyatli yuborildi.",
     "successSimulated": "Buyurtmangiz muvaffaqiyatli yuborildi. (Simulyatsiya)",
     "error": "Buyurtma yuborishda xatolik yuz berdi. Qayta urinib ko'ring."

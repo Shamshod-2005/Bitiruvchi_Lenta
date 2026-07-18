@@ -1,10 +1,4 @@
-import {
-  Filter,
-  Minus,
-  Plus,
-  Search,
-  ShoppingBag
-} from "lucide-react";
+import { Filter, Minus, Plus, Search, ShoppingBag } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -16,11 +10,11 @@ interface ProductsProps {
 }
 
 const FILTER_COLORS = [
-  { name: "Barchasi", value: "all" },
-  { name: "Qizil", value: "qizil" },
-  { name: "Ko'k", value: "ko'k" },
-  { name: "Bordo", value: "bordo" },
-  { name: "Individual", value: "individual" },
+  { name: "all", value: "all" },
+  { name: "red", value: "qizil" },
+  { name: "blue", value: "ko'k" },
+  { name: "burgundy", value: "bordo" },
+  { name: "individual", value: "individual" },
 ];
 
 export default function Products({ onOrderProduct }: ProductsProps) {
@@ -119,7 +113,7 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                       : "bg-warm-bg text-gray-600 hover:bg-gold/10 hover:text-gold"
                   }`}
                 >
-                  {color.name}
+                  {t(`products.filters.${color.name}`)}
                 </button>
               ))}
             </div>
@@ -152,7 +146,7 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.4 }}
-                    className="bg-white rounded-[2rem] overflow-hidden border border-gold/10 shadow-sm hover:shadow-2xl hover:border-gold/30 transition-all duration-300 flex flex-col justify-between group"
+                    className="bg-white rounded-4xl overflow-hidden border border-gold/10 shadow-sm hover:shadow-2xl hover:border-gold/30 transition-all duration-300 flex flex-col justify-between group"
                     id={`product-card-${product.id}`}
                   >
                     {/* Card Top: Image & Badge */}
@@ -160,7 +154,7 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                       <img
                         src={product.image}
                         alt={product.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                         referrerPolicy="no-referrer"
                       />
 
@@ -177,7 +171,7 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                       <span
                         className="absolute bottom-4 right-4 w-6 h-6 rounded-full border-2 border-white shadow-md"
                         style={{ backgroundColor: product.colorHex }}
-                        title={`Asosiy rang: ${product.color}`}
+                        title={`${t("products.swatchTitle")} ${product.color}`}
                       />
                     </div>
 
@@ -190,7 +184,7 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                           </h3>
                         </div>
                         <p className="text-[10px] text-gold font-bold uppercase tracking-widest">
-                          Rangi: {product.color}
+                          {t("products.colorLabel")} {product.color}
                         </p>
                         <p className="text-xs text-gray-500 leading-relaxed line-clamp-3 font-light">
                           {product.description}
@@ -222,7 +216,7 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                                 handleQuantityChange(product.id, "decrement")
                               }
                               className="p-1 px-2.5 text-gray-500 hover:bg-warm-bg rounded-l-lg transition-colors focus:outline-none"
-                              aria-label="Kamaytirish"
+                              aria-label={t("products.decrease")}
                             >
                               <Minus className="w-3 h-3 text-gold" />
                             </button>
@@ -239,7 +233,7 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                                 handleQuantityChange(product.id, "increment")
                               }
                               className="p-1 px-2.5 text-gray-500 hover:bg-warm-bg rounded-r-lg transition-colors focus:outline-none"
-                              aria-label="Ko'paytirish"
+                              aria-label={t("products.increase")}
                             >
                               <Plus className="w-3 h-3 text-gold" />
                             </button>

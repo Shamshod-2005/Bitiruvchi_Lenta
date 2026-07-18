@@ -60,11 +60,11 @@ export default function Hero({ onOpenOrderModal }: HeroProps) {
       className="relative min-h-screen pt-28 pb-16 flex items-center overflow-hidden bg-warm-bg"
     >
       {/* Decorative background watermarks & glows */}
-      <div className="absolute top-10 left-12 opacity-[0.03] font-serif text-[180px] lg:text-[280px] select-none leading-none -z-0 pointer-events-none">
+      <div className="absolute top-10 left-12 opacity-[0.03] font-serif text-[180px] lg:text-[280px] select-none leading-none z-0 pointer-events-none">
         2026
       </div>
-      <div className="absolute top-1/4 -right-64 w-[500px] h-[500px] rounded-full bg-gold/5 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 -left-64 w-[400px] h-[400px] rounded-full bg-gold/5 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 -right-64 w-125 h-125 rounded-full bg-gold/5 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 -left-64 w-100 h-100 rounded-full bg-gold/5 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative w-full z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -147,26 +147,25 @@ export default function Hero({ onOpenOrderModal }: HeroProps) {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, type: "spring" }}
-              className="relative w-full max-w-[420px] aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border border-gold/10 bg-white group"
+              className="relative w-full max-w-105 aspect-4/5 rounded-3xl overflow-hidden shadow-2xl border border-gold/10 bg-white group"
               id="hero-image-showcase"
             >
               <img
                 src={heroImage}
-                alt="Premium bitiruvchi lentasi va qalpoq"
+                alt={t("hero.imageAlt")}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
                 referrerPolicy="no-referrer"
               />
               {/* Elegant blur-in overlay card */}
-              <div className="absolute inset-0 bg-gradient-to-t from-editorial-dark/90 via-editorial-dark/30 to-transparent flex flex-col justify-end p-6 sm:p-8">
+              <div className="absolute inset-0 bg-linear-to-t from-editorial-dark/90 via-editorial-dark/30 to-transparent flex flex-col justify-end p-6 sm:p-8">
                 <span className="text-gold text-[10px] uppercase tracking-widest font-bold">
-                  Premium Sifat
+                  {t("hero.imageBadge")}
                 </span>
                 <h3 className="text-white text-xl sm:text-2xl font-serif font-bold mt-1">
-                  Oltin Yozuvli Atlas Lentalar
+                  {t("hero.imageTitle")}
                 </h3>
                 <p className="text-gray-300 text-xs sm:text-sm mt-2 font-light leading-relaxed">
-                  Har bir buyurtmaga individual yondashilgan holda, sifatli
-                  yaltiroq va bardoshli matnlardan tayyorlanadi.
+                  {t("hero.imageDescription")}
                 </p>
               </div>
 

@@ -8,32 +8,32 @@ export default function About() {
     {
       id: "adv-1",
       icon: <Shield className="w-5 h-5 text-gold" />,
-      title: "Sifatli mahsulot",
-      desc: "Lentalarimiz eng yuqori sifatli atlas va shoyi matolardan tayyorlanadi. Harflar o'chmaydi va yiltiramaydi.",
+      title: t("about.advantages.quality.title"),
+      desc: t("about.advantages.quality.description"),
     },
     {
       id: "adv-2",
       icon: <Tag className="w-5 h-5 text-gold" />,
-      title: "Hamyonbop narx",
-      desc: "Bozordagi eng hamyonbop narxlar va guruhli buyurtmalar uchun maxsus ulgurji chegirmalar taqdim etamiz.",
+      title: t("about.advantages.price.title"),
+      desc: t("about.advantages.price.description"),
     },
     {
       id: "adv-3",
       icon: <Zap className="w-5 h-5 text-gold" />,
-      title: "Tez yetkazib berish",
-      desc: "Buyurtmalar 1-3 kun ichida tayyorlanadi va manzilingizga kechiktirilmasdan yetkazib beriladi.",
+      title: t("about.advantages.delivery.title"),
+      desc: t("about.advantages.delivery.description"),
     },
     {
       id: "adv-4",
       icon: <Palette className="w-5 h-5 text-gold" />,
-      title: "Individual buyurtmalar",
-      desc: "Sizning xohishingizga ko'ra har qanday yozuv, maktab ramzi yoki shaxsiy ismlarni yozib bera olamiz.",
+      title: t("about.advantages.custom.title"),
+      desc: t("about.advantages.custom.description"),
     },
     {
       id: "adv-5",
       icon: <MapPin className="w-5 h-5 text-gold" />,
-      title: "O'zbekiston bo'ylab yetkazib berish",
-      desc: "Respublikaning istalgan viloyat, shahar yoki chekka tumanlarigacha xavfsiz yetkazish yo'lga qo'yilgan.",
+      title: t("about.advantages.regions.title"),
+      desc: t("about.advantages.regions.description"),
     },
   ];
 

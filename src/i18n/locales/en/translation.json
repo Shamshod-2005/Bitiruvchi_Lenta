@@ -4,7 +4,8 @@
     "search": "Search",
     "contact": "Contact",
     "close": "Close",
-    "language": "Language"
+    "language": "Language",
+    "currency": "sum"
   },
   "navbar": {
     "home": "Home",
@@ -25,7 +26,11 @@
       "institutions": "Educational institutions",
       "regions": "Across regions",
       "warranty": "Guaranteed quality"
-    }
+    },
+    "imageBadge": "Premium quality",
+    "imageTitle": "Gold-lettered satin ribbons",
+    "imageDescription": "Each order is created individually using glossy, durable, and high-quality materials.",
+    "imageAlt": "Premium graduation ribbon and cap"
   },
   "products": {
     "title": "Our premium ribbons",
@@ -35,6 +40,18 @@
     "price": "Price:",
     "quantity": "Quantity:",
     "order": "Order now",
+    "sectionLabel": "Product catalog",
+    "colorLabel": "Color:",
+    "swatchTitle": "Main color:",
+    "decrease": "Decrease",
+    "increase": "Increase",
+    "filters": {
+      "all": "All",
+      "red": "Red",
+      "blue": "Blue",
+      "burgundy": "Burgundy",
+      "individual": "Individual"
+    },
     "notFoundTitle": "No products found",
     "notFoundDescription": "Sorry, no products match your search or filter selection. Please try another keyword.",
     "clear": "Clear catalog"
@@ -43,13 +60,42 @@
     "eyebrow": "Our advantages",
     "title": "Why choose us?",
     "description": "We consider it our duty to provide every graduate with the most beautiful and high-quality ribbons for their special day. Our years of experience prove this.",
-    "guarantee": "Guaranteed service"
+    "guarantee": "Guaranteed service",
+    "advantages": {
+      "quality": {
+        "title": "Quality product",
+        "description": "Our ribbons are made from premium atlas and silk fabric. The letters do not fade or lose their shine."
+      },
+      "price": {
+        "title": "Affordable price",
+        "description": "We offer the most competitive prices on the market and special wholesale discounts for group orders."
+      },
+      "delivery": {
+        "title": "Fast delivery",
+        "description": "Orders are prepared within 1–3 days and delivered to your address without delay."
+      },
+      "custom": {
+        "title": "Custom orders",
+        "description": "We can print any text, school symbol, or personal name according to your request."
+      },
+      "regions": {
+        "title": "Delivery across Uzbekistan",
+        "description": "We deliver safely to any region, city, or remote district of the republic."
+      }
+    }
   },
   "gallery": {
     "eyebrow": "Gallery",
     "title": "Photos from our customers",
     "description": "Bright moments from festive days of groups, classmates, and students who ordered from us across the country.",
-    "caption": "The joy of real graduates"
+    "caption": "The joy of real graduates",
+    "categories": {
+      "all": "All",
+      "ceremony": "Ceremony",
+      "school": "School",
+      "product": "Products",
+      "university": "University"
+    }
   },
   "reviews": {
     "eyebrow": "What our customers say",
@@ -62,7 +108,25 @@
   "faq": {
     "eyebrow": "Frequently asked questions",
     "title": "Frequently asked questions",
-    "description": "All answers about the order process, payments, quality guarantees, and delivery are here."
+    "description": "All answers about the order process, payments, quality guarantees, and delivery are here.",
+    "items": {
+      "delivery": {
+        "question": "How long does it take to prepare an order?",
+        "answer": "Usually orders are prepared within 1–3 days depending on size and complexity. Large school and group orders are delivered within the agreed timeframe."
+      },
+      "shipping": {
+        "question": "Is delivery available?",
+        "answer": "Yes, delivery is available across Uzbekistan. In Tashkent by courier and to other regions through fast postal services or agreed taxi."
+      },
+      "minimum": {
+        "question": "What is the minimum order quantity?",
+        "answer": "There is no minimum order! You can even order a single ribbon. However, large group orders of 15 or more items receive special discounts."
+      },
+      "custom": {
+        "question": "Can you create a custom design?",
+        "answer": "Absolutely! You can choose any text, school number, class letter, graduate name, fabric color, and lettering color."
+      }
+    }
   },
   "contact": {
     "eyebrow": "Contacts",
@@ -71,7 +135,25 @@
     "detailsTitle": "Contact information",
     "addressTitle": "Our office",
     "address": "Republic of Uzbekistan, Tashkent city, Chilonzor district, Bunyodkor street, 24.",
-    "mapBadge": "📍 Delivery across Tashkent is free!"
+    "mapBadge": "📍 Delivery across Tashkent is free!",
+    "phoneTitle": "Our phone",
+    "phoneValue": "+998 94 011 52 44",
+    "phoneSub": "Our operators accept orders",
+    "telegramTitle": "Our Telegram",
+    "telegramValue": "@Angrenlenti",
+    "telegramSub": "Follow new designs and ideas",
+    "instagramTitle": "Our Instagram",
+    "instagramValue": "@angren.lenti",
+    "instagramSub": "Real photos from our clients",
+    "hoursTitle": "Working hours",
+    "hoursValue": "Every day 09:00 — 21:00",
+    "hoursSub": "We work without days off"
+  },
+  "floating": {
+    "telegram": "Telegram",
+    "instagram": "Instagram",
+    "phone": "Phone",
+    "scrollToTop": "Scroll to top"
   },
   "footer": {
     "quickLinks": "Quick links",
@@ -80,7 +162,12 @@
     "contactEmail": "For cooperation:",
     "privacy": "Privacy policy",
     "terms": "Terms of use",
-    "rights": "All rights reserved"
+    "rights": "All rights reserved",
+    "brandLine": "Graduation Ribbons",
+    "address": "Uzbekistan, Tashkent region, Angren",
+    "copyright": "Graduation Ribbons — All rights reserved",
+    "phone": "+998 94 011 52 44",
+    "email": "info@lentalar.uz"
   },
   "modal": {
     "title": "Formalization",
@@ -90,8 +177,56 @@
     "institution": "School or university *",
     "group": "Class or course *",
     "product": "Ribbon type *",
+    "region": "Region *",
+    "address": "Address *",
+    "comment": "Comment",
     "quantity": "Quantity (pcs) *",
     "submit": "Order",
+    "closeLabel": "Close",
+    "namePlaceholder": "For example: Sardorbek Rahimov",
+    "phonePlaceholder": "+998901234567",
+    "institutionPlaceholder": "For example: 144 school or TUIT",
+    "groupPlaceholder": "For example: 11th grade or 2nd year",
+    "regionPlaceholder": "Select your region",
+    "addressPlaceholder": "For example: Chilonzor, Bunyodkor street",
+    "commentPlaceholder": "Additional information (optional)",
+    "productColor": "Color:",
+    "pricePerUnit": "sum / pcs",
+    "totalAmount": "Total amount:",
+    "priceSummary": "Total price",
+    "requiredHint": "* required field",
+    "cancel": "Cancel",
+    "submitting": "Submitting...",
+    "confirm": "Confirm order",
+    "errors": {
+      "fullNameRequired": "Please enter your full name",
+      "phoneRequired": "Please enter your phone number",
+      "phonePattern": "Phone format: +998901234567",
+      "institutionRequired": "Please enter your school or university",
+      "groupRequired": "Please enter your class or course",
+      "productRequired": "Please select a ribbon type",
+      "quantityRequired": "Please enter the quantity",
+      "quantityMin": "Minimum order is 1 item",
+      "regionRequired": "Please select a region",
+      "addressRequired": "Please enter the delivery address",
+      "telegramToken": "The Telegram bot token is invalid or the bot is not added to the chat. Please check the token and chat ID."
+    },
+    "regions": {
+      "tashkentCity": "Tashkent city",
+      "tashkentRegion": "Tashkent region",
+      "andijan": "Andijan region",
+      "bukhara": "Bukhara region",
+      "fergana": "Fergana region",
+      "jizzakh": "Jizzakh region",
+      "khorezm": "Khorezm region",
+      "namangan": "Namangan region",
+      "navoi": "Navoiy region",
+      "qashqadarya": "Qashqadarya region",
+      "samarqand": "Samarqand region",
+      "sirdaryo": "Sirdaryo region",
+      "surkhandarya": "Surkhandarya region",
+      "karakalpakstan": "Republic of Karakalpakstan"
+    },
     "success": "Your order has been sent successfully.",
     "successSimulated": "Your order has been sent successfully. (Simulation)",
     "error": "An error occurred while submitting the order. Please try again."

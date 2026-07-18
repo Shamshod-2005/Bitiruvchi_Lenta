@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { ArrowUp } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export default function ScrollToTop() {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -34,7 +36,7 @@ export default function ScrollToTop() {
           exit={{ opacity: 0, scale: 0.8 }}
           onClick={scrollToTop}
           className="fixed bottom-24 right-6 z-40 p-3 rounded-full bg-amber-500 text-white shadow-lg hover:bg-amber-600 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
-          aria-label="Tepaga qaytish"
+          aria-label={t('floating.scrollToTop')}
           id="scroll-to-top-button"
         >
           <ArrowUp className="w-6 h-6" />

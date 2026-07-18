@@ -118,7 +118,7 @@ export default function Navbar({ onOpenOrderModal }: NavbarProps) {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="p-2 rounded-xl hover:bg-warm-bg text-editorial-dark lg:hidden transition-colors focus:outline-none border border-transparent hover:border-gold/20"
-              aria-label="Menuni ochish/yopish"
+              aria-label={t("navbar.menuToggle")}
               id="mobile-menu-toggle"
             >
               {isMobileMenuOpen ? (
@@ -141,7 +141,7 @@ export default function Navbar({ onOpenOrderModal }: NavbarProps) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="fixed inset-0 z-30 bg-[#1a1a1a]/40 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 z-30 bg-editorial-dark/40 backdrop-blur-sm lg:hidden"
             />
 
             {/* Menu Box */}
@@ -155,7 +155,7 @@ export default function Navbar({ onOpenOrderModal }: NavbarProps) {
             >
               <div className="space-y-6">
                 <p className="text-[10px] font-bold uppercase tracking-widest text-gold border-b border-gold/20 pb-2">
-                  Navigatsiya
+                  {t("navbar.mobileMenuTitle")}
                 </p>
                 <div className="flex flex-col gap-4">
                   {navLinks.map((link) => (
@@ -186,7 +186,7 @@ export default function Navbar({ onOpenOrderModal }: NavbarProps) {
                   {t("common.buy")}
                 </button>
                 <p className="text-xs text-center text-gray-500 font-light">
-                  O'zbekiston bo'ylab tezkor yetkazib berish
+                  {t("navbar.deliveryText")}
                 </p>
               </div>
             </motion.div>

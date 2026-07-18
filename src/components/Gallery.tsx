@@ -66,13 +66,13 @@ export default function Gallery() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="relative aspect-video sm:aspect-square md:aspect-[4/3] rounded-[2rem] overflow-hidden group shadow-md border border-gold/10 hover:border-gold/30 transition-all bg-warm-bg"
+                className="relative aspect-video sm:aspect-square md:aspect-4/3 rounded-4xl overflow-hidden group shadow-md border border-gold/10 hover:border-gold/30 transition-all bg-warm-bg"
                 id={`gallery-item-${item.id}`}
               >
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                  className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out"
                   referrerPolicy="no-referrer"
                 />
 

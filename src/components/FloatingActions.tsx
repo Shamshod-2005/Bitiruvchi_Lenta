@@ -1,8 +1,10 @@
 import { motion, AnimatePresence } from "motion/react";
 import { Phone, Send, Instagram, ArrowUp } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function FloatingActions() {
+  const { t } = useTranslation();
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -20,21 +22,21 @@ export default function FloatingActions() {
       id: "tg-float",
       icon: <Send className="w-5 h-5" />,
       color: "bg-sky-500 hover:bg-sky-600",
-      label: "Telegram",
+      label: t("floating.telegram"),
       url: "https://t.me/Angrenlenti",
     },
     {
       id: "insta-float",
       icon: <Instagram className="w-5 h-5" />,
       color: "bg-pink-600 hover:bg-pink-700",
-      label: "Instagram",
+      label: t("floating.instagram"),
       url: "https://instagram.com/angren.lenti",
     },
     {
       id: "phone-float",
       icon: <Phone className="w-5 h-5" />,
       color: "bg-emerald-500 hover:bg-emerald-600",
-      label: "Telefon",
+      label: t("floating.phone"),
       url: "tel:+998940115244",
     },
   ];
@@ -59,14 +61,14 @@ export default function FloatingActions() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="flex h-11 w-11 items-center justify-center rounded-full border border-gold/20 bg-white text-gold shadow-lg backdrop-blur transition-colors"
-            aria-label="Yuqoriga chiqish"
+            aria-label={t("floating.scrollToTop")}
           >
             <ArrowUp className="h-5 w-5" />
           </motion.button>
         )}
       </AnimatePresence>
 
-      <div className="flex flex-col gap-2 rounded-[1.5rem] border border-white/40 bg-white/80 p-2 shadow-xl backdrop-blur">
+      <div className="flex flex-col gap-2 rounded-3xl border border-white/40 bg-white/80 p-2 shadow-xl backdrop-blur">
         {actions.map((action, index) => (
           <motion.a
             key={action.id}

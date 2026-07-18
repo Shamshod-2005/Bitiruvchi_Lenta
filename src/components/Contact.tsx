@@ -15,33 +15,33 @@ export default function Contact() {
     {
       id: "c-1",
       icon: <Phone className="w-5 h-5 text-gold" />,
-      title: "Telefon raqamimiz",
+      title: t("contact.phoneTitle"),
       value: "+998 94 011 52 44",
-      sub: "Operatorlarimiz buyurtmalarni qabul qiladi",
+      sub: t("contact.phoneSub"),
       href: "tel:+998940115244",
     },
     {
       id: "c-2",
       icon: <Send className="w-5 h-5 text-gold" />,
-      title: "Telegram kanalimiz",
+      title: t("contact.telegramTitle"),
       value: "@Angrenlenti",
-      sub: "Yangi dizaynlar va g'oyalarni kuzating",
+      sub: t("contact.telegramSub"),
       href: "https://t.me/Angrenlenti",
     },
     {
       id: "c-3",
       icon: <Instagram className="w-5 h-5 text-gold" />,
-      title: "Instagram sahifamiz",
+      title: t("contact.instagramTitle"),
       value: "@angren.lenti",
-      sub: "Mijozlarimizdan olingan real rasmlar",
+      sub: t("contact.instagramSub"),
       href: "https://instagram.com/angren.lenti",
     },
     {
       id: "c-4",
       icon: <Clock className="w-5 h-5 text-gold" />,
-      title: "Ish tartibi",
-      value: "Har kuni 09:00 - 21:00",
-      sub: "Dam olish kunlarisiz doim xizmatdamiz",
+      title: t("contact.hoursTitle"),
+      value: t("contact.hoursValue"),
+      sub: t("contact.hoursSub"),
       href: null,
     },
   ];
@@ -91,7 +91,7 @@ export default function Contact() {
                           href={info.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-base font-serif font-bold text-editorial-dark hover:text-gold mt-1 block flex items-center gap-1 cursor-pointer"
+                          className="text-base font-serif font-bold text-editorial-dark hover:text-gold mt-1 flex items-center gap-1 cursor-pointer"
                         >
                           {info.value}{" "}
                           <ExternalLink className="w-3.5 h-3.5 text-gray-400" />
@@ -133,7 +133,7 @@ export default function Contact() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="w-full h-full rounded-[2rem] overflow-hidden border border-gold/15 shadow-lg flex flex-col relative"
+              className="w-full h-full rounded-4xl overflow-hidden border border-gold/15 shadow-lg flex flex-col relative"
               id="maps-wrapper"
             >
               <iframe
@@ -144,7 +144,7 @@ export default function Contact() {
                 allowFullScreen={true}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Toshkent xaritasi"
+                title={t("contact.mapTitle")}
                 id="gmaps-iframe"
               />
               <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full shadow-md border border-gold/10 text-[10px] text-gold font-bold uppercase tracking-widest pointer-events-none">

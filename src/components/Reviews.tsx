@@ -76,7 +76,7 @@ export default function Reviews() {
         </div>
 
         {/* Trust summary box */}
-        <div className="mt-16 bg-editorial-dark rounded-[2rem] p-8 flex flex-col sm:flex-row items-center justify-between gap-6 max-w-4xl mx-auto shadow-2xl relative overflow-hidden text-white border border-gold/10">
+        <div className="mt-16 bg-editorial-dark rounded-4xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6 max-w-4xl mx-auto shadow-2xl relative overflow-hidden text-white border border-gold/10">
           <div className="absolute -right-10 -bottom-10 w-32 h-32 bg-gold/20 rounded-full blur-3xl pointer-events-none"></div>
           <div className="flex items-center gap-4 text-center sm:text-left relative z-10">
             <div className="text-4xl">🌟</div>

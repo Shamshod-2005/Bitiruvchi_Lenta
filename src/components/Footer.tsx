@@ -52,7 +52,7 @@ export default function Footer() {
                 <GraduationCap className="w-5 h-5" />
               </div>
               <span className="text-2xl font-bold font-serif text-white tracking-tight">
-                Bitiruvchi <span className="text-gold">Lentalari</span>
+                {t("footer.brandLine")}
               </span>
             </div>
             <p className="text-xs sm:text-sm font-light leading-relaxed text-gray-400">
@@ -97,7 +97,7 @@ export default function Footer() {
             <ul className="space-y-3.5 text-xs sm:text-sm font-light">
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-gold shrink-0 mt-0.5" />
-                <span>O'zbekiston, Toshkent viloyati, Angren shahri</span>
+                <span>{t("footer.address")}</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-gold shrink-0" />
@@ -124,7 +124,7 @@ export default function Footer() {
         {/* Footer Bottom */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] uppercase tracking-[0.15em] text-gray-500 font-bold">
           <p>
-            © {currentYear} Bitiruvchi Lentalari — {t("footer.rights")}
+            © {currentYear} {t("footer.copyright")}
           </p>
           <div className="flex gap-6">
             <a
