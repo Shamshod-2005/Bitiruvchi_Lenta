@@ -47,7 +47,7 @@ export default function FloatingActions() {
 
   return (
     <div
-      className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-2"
+      className="fixed bottom-24 right-4 md:bottom-6 md:right-6 z-40 flex flex-col items-end gap-2"
       id="floating-action-buttons"
     >
       <AnimatePresence>
@@ -60,7 +60,7 @@ export default function FloatingActions() {
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-gold/20 bg-white text-gold shadow-lg backdrop-blur transition-colors"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-gold/20 bg-white dark:bg-editorial-dark text-gold shadow-lg backdrop-blur transition-colors duration-300"
             aria-label={t("floating.scrollToTop")}
           >
             <ArrowUp className="h-5 w-5" />
@@ -68,7 +68,7 @@ export default function FloatingActions() {
         )}
       </AnimatePresence>
 
-      <div className="flex flex-col gap-2 rounded-3xl border border-white/40 bg-white/80 p-2 shadow-xl backdrop-blur">
+      <div className="flex flex-col gap-2 rounded-3xl border border-white/40 dark:border-white/10 bg-white/80 dark:bg-editorial-dark/80 p-2 shadow-xl backdrop-blur transition-colors duration-300">
         {actions.map((action, index) => (
           <motion.a
             key={action.id}

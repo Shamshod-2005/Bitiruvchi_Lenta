@@ -21,6 +21,7 @@ export default function Products({ onOrderProduct }: ProductsProps) {
   const { t } = useTranslation();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedColorFilter, setSelectedColorFilter] = useState("all");
+  const [showAllProducts, setShowAllProducts] = useState(false);
   const [quantities, setQuantities] = useState<{ [productId: string]: number }>(
     {
       "oltin-yozuvli": 1,
@@ -61,6 +62,10 @@ export default function Products({ onOrderProduct }: ProductsProps) {
     return matchesSearch && matchesColor;
   });
 
+  const displayedProducts = showAllProducts
+    ? filteredProducts
+    : filteredProducts.slice(0, 6);
+
   const getLabelStyle = (label?: string) => {
     switch (label) {
       case "Eng mashhur":
@@ -77,7 +82,7 @@ export default function Products({ onOrderProduct }: ProductsProps) {
   return (
     <section
       id="mahsulotlar"
-      className="py-24 bg-warm-bg/40 border-t border-b border-gold/10"
+      className="py-24 bg-warm-bg/40 dark:bg-editorial-dark border-t border-b border-gold/10 transition-colors duration-300"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
@@ -85,17 +90,17 @@ export default function Products({ onOrderProduct }: ProductsProps) {
           <span className="text-gold font-bold text-xs uppercase tracking-widest">
             Mahsulotlar katalogi
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold font-serif text-editorial-dark mt-2">
+          <h2 className="text-3xl sm:text-4xl font-bold text-editorial-dark dark:text-gray-100 mt-2 transition-colors duration-300">
             {t("products.title")}
           </h2>
           <div className="w-16 h-0.5 bg-gold mx-auto mt-4" />
-          <p className="text-gray-600 mt-4 leading-relaxed font-light text-sm sm:text-base">
+          <p className="text-gray-600 dark:text-gray-400 mt-4 leading-relaxed font-light text-sm sm:text-base transition-colors duration-300">
             {t("products.subtitle")}
           </p>
         </div>
 
         {/* Filter and Search Controls */}
-        <div className="bg-white rounded-3xl p-6 shadow-lg shadow-gold/5 border border-gold/10 mb-12 flex flex-col md:flex-row gap-6 justify-between items-center">
+        <div className="bg-white dark:bg-white/5 rounded-3xl p-6 shadow-lg shadow-gold/5 border border-gold/10 mb-12 flex flex-col md:flex-row gap-6 justify-between items-center transition-colors duration-300">
           {/* Color filter tab */}
           <div className="w-full md:w-auto flex flex-wrap gap-2 items-center">
             <span className="text-xs font-bold uppercase tracking-widest text-gray-400 mr-2 flex items-center gap-1.5">
@@ -110,7 +115,7 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                   className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all focus:outline-none ${
                     selectedColorFilter === color.value
                       ? "bg-gold text-white shadow-md shadow-gold/20"
-                      : "bg-warm-bg text-gray-600 hover:bg-gold/10 hover:text-gold"
+                      : "bg-warm-bg dark:bg-white/5 text-gray-600 dark:text-gray-300 hover:bg-gold/10 hover:text-gold"
                   }`}
                 >
                   {t(`products.filters.${color.name}`)}
@@ -127,17 +132,18 @@ export default function Products({ onOrderProduct }: ProductsProps) {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={t("products.searchPlaceholder")}
-              className="w-full pl-10 pr-4 py-2.5 rounded-full border border-gold/10 text-xs focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/10 transition-all bg-warm-bg/30 text-editorial-dark placeholder:text-gray-400"
+              className="w-full pl-10 pr-4 py-2.5 rounded-full border border-gold/10 text-xs focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/10 transition-all bg-warm-bg/30 dark:bg-white/5 text-editorial-dark dark:text-gray-100 placeholder:text-gray-400"
             />
           </div>
         </div>
 
         {/* Products Grid */}
         {filteredProducts.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <AnimatePresence mode="popLayout">
-              {filteredProducts.map((product) => {
-                const qty = quantities[product.id] || 1;
+          <div className="flex flex-col items-center gap-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full">
+              <AnimatePresence mode="popLayout">
+                {displayedProducts.map((product) => {
+                  const qty = quantities[product.id] || 1;
                 return (
                   <motion.div
                     key={product.id}
@@ -146,11 +152,11 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.4 }}
-                    className="bg-white rounded-4xl overflow-hidden border border-gold/10 shadow-sm hover:shadow-2xl hover:border-gold/30 transition-all duration-300 flex flex-col justify-between group"
+                    className="bg-white dark:bg-white/5 rounded-4xl overflow-hidden border border-gold/10 shadow-sm hover:shadow-2xl hover:border-gold/30 transition-all duration-300 flex flex-col justify-between group"
                     id={`product-card-${product.id}`}
                   >
                     {/* Card Top: Image & Badge */}
-                    <div className="relative aspect-square overflow-hidden bg-warm-bg/20">
+                    <div className="relative aspect-square overflow-hidden bg-warm-bg/20 dark:bg-white/5">
                       <img
                         src={product.image}
                         alt={product.name}
@@ -179,14 +185,14 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                     <div className="p-6 flex-1 flex flex-col justify-between">
                       <div className="space-y-2">
                         <div className="flex justify-between items-start">
-                          <h3 className="text-lg font-serif font-bold text-editorial-dark group-hover:text-gold transition-colors">
+                          <h3 className="text-lg font-bold text-editorial-dark dark:text-gray-100 group-hover:text-gold transition-colors">
                             {product.name}
                           </h3>
                         </div>
                         <p className="text-[10px] text-gold font-bold uppercase tracking-widest">
                           {t("products.colorLabel")} {product.color}
                         </p>
-                        <p className="text-xs text-gray-500 leading-relaxed line-clamp-3 font-light">
+                        <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-3 font-light">
                           {product.description}
                         </p>
                       </div>
@@ -197,25 +203,25 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                           <span className="text-xs uppercase tracking-widest text-gray-400 font-medium">
                             {t("products.price")}
                           </span>
-                          <span className="text-xl font-serif font-bold text-editorial-dark">
+                          <span className="text-xl font-bold text-editorial-dark dark:text-gray-100">
                             {product.price.toLocaleString("uz-UZ")}{" "}
-                            <small className="text-xs uppercase tracking-widest font-sans font-semibold text-gray-500">
+                            <small className="text-xs uppercase tracking-widest font-sans font-semibold text-gray-500 dark:text-gray-400">
                               so'm
                             </small>
                           </span>
                         </div>
 
                         {/* Interactive Quantity Box */}
-                        <div className="flex items-center justify-between bg-warm-bg/30 p-1.5 rounded-xl border border-gold/5">
-                          <span className="text-xs uppercase tracking-widest text-gray-500 font-medium pl-2">
+                        <div className="flex items-center justify-between bg-warm-bg/30 dark:bg-white/5 p-1.5 rounded-xl border border-gold/5">
+                          <span className="text-xs uppercase tracking-widest text-gray-500 dark:text-gray-400 font-medium pl-2">
                             {t("products.quantity")}
                           </span>
-                          <div className="flex items-center gap-1 bg-white border border-gold/10 rounded-lg shadow-sm">
+                          <div className="flex items-center gap-1 bg-white dark:bg-editorial-dark border border-gold/10 rounded-lg shadow-sm">
                             <button
                               onClick={() =>
                                 handleQuantityChange(product.id, "decrement")
                               }
-                              className="p-1 px-2.5 text-gray-500 hover:bg-warm-bg rounded-l-lg transition-colors focus:outline-none"
+                              className="p-1 px-2.5 text-gray-500 dark:text-gray-400 hover:bg-warm-bg dark:hover:bg-white/10 rounded-l-lg transition-colors focus:outline-none"
                               aria-label={t("products.decrease")}
                             >
                               <Minus className="w-3 h-3 text-gold" />
@@ -226,13 +232,13 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                               onChange={(e) =>
                                 handleInputChange(product.id, e.target.value)
                               }
-                              className="w-10 text-center text-xs font-bold text-editorial-dark focus:outline-none"
+                              className="w-10 text-center text-xs font-bold text-editorial-dark dark:text-gray-100 bg-transparent focus:outline-none"
                             />
                             <button
                               onClick={() =>
                                 handleQuantityChange(product.id, "increment")
                               }
-                              className="p-1 px-2.5 text-gray-500 hover:bg-warm-bg rounded-r-lg transition-colors focus:outline-none"
+                              className="p-1 px-2.5 text-gray-500 dark:text-gray-400 hover:bg-warm-bg dark:hover:bg-white/10 rounded-r-lg transition-colors focus:outline-none"
                               aria-label={t("products.increase")}
                             >
                               <Plus className="w-3 h-3 text-gold" />
@@ -255,13 +261,31 @@ export default function Products({ onOrderProduct }: ProductsProps) {
               })}
             </AnimatePresence>
           </div>
+
+          {filteredProducts.length > 6 && (
+              <button
+                type="button"
+                onClick={() => setShowAllProducts((prev) => !prev)}
+                className="px-8 py-3.5 rounded-full border border-gold/30 bg-white dark:bg-white/5 hover:border-gold hover:bg-gold/10 text-editorial-dark dark:text-gray-100 font-semibold text-sm transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer flex items-center gap-2 group"
+              >
+                <span>
+                  {showAllProducts
+                    ? "Kamroq ko'rsatish"
+                    : `Barcha mahsulotlarni ko'rish (${filteredProducts.length} ta)`}
+                </span>
+                <span className="text-gold group-hover:translate-y-0.5 transition-transform duration-200">
+                  {showAllProducts ? "↑" : "↓"}
+                </span>
+              </button>
+            )}
+          </div>
         ) : (
-          <div className="text-center py-16 bg-white rounded-3xl border border-gold/10 shadow-lg shadow-gold/5 p-8 max-w-md mx-auto">
+          <div className="text-center py-16 bg-white dark:bg-white/5 rounded-3xl border border-gold/10 shadow-lg shadow-gold/5 p-8 max-w-md mx-auto transition-colors duration-300">
             <span className="text-3xl text-gold">🔍</span>
-            <h3 className="text-lg font-serif font-bold text-editorial-dark mt-4">
+            <h3 className="text-lg font-bold text-editorial-dark dark:text-gray-100 mt-4">
               {t("products.notFoundTitle")}
             </h3>
-            <p className="text-xs text-gray-500 mt-2 font-light leading-relaxed">
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 font-light leading-relaxed">
               {t("products.notFoundDescription")}
             </p>
             <button

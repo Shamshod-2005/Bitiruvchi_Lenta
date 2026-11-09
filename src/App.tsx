@@ -20,6 +20,9 @@ import ScrollToTop from "./components/ScrollToTop";
 import Toast from "./components/Toast";
 import { Product, Template } from "./types";
 import TemplatePage from "./components/TemplatePage";
+import MobileBottomNav from "./components/MobileBottomNav";
+import RibbonConstructor from "./components/RibbonConstructor";
+import DiscountCalculator from "./components/DiscountCalculator";
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -28,6 +31,7 @@ export default function App() {
     null,
   );
   const [initialQuantity, setInitialQuantity] = useState(1);
+  const [initialComment, setInitialComment] = useState("");
   const [toast, setToast] = useState<{
     message: string;
     type: "success" | "error";
@@ -37,13 +41,19 @@ export default function App() {
     setSelectedProduct(null);
     setSelectedTemplate(null);
     setInitialQuantity(1);
+    setInitialComment("");
     setIsModalOpen(true);
   };
 
-  const handleOrderProduct = (product: Product, quantity: number) => {
+  const handleOrderProduct = (
+    product: Product,
+    quantity: number,
+    customNote?: string,
+  ) => {
     setSelectedProduct(product);
     setSelectedTemplate(null);
     setInitialQuantity(quantity);
+    setInitialComment(customNote || "");
     setIsModalOpen(true);
   };
 
@@ -57,7 +67,7 @@ export default function App() {
 
   return (
     <div
-      className="min-h-screen bg-white text-gray-800 font-sans selection:bg-gold/20 selection:text-gold scroll-smooth"
+      className="min-h-screen bg-white dark:bg-editorial-dark text-gray-800 dark:text-gray-100 font-sans selection:bg-gold/20 selection:text-gold scroll-smooth transition-colors duration-300"
       id="app-root-layout"
     >
       {/* Toast Notification */}
@@ -79,6 +89,10 @@ export default function App() {
         {/* Hero Section */}
         <Hero onOpenOrderModal={handleOpenOrderModal} />
 
+        {/* Jonli Lenta Konstruktori (vaqtinchalik kommentda) */}
+        {/* <RibbonConstructor onOrderCustomRibbon={handleOrderProduct} /> */}
+
+        {/* Lenta shablonlari */}
         <TemplatePage
           onSelectTemplate={(template) => {
             setSelectedTemplate(template);
@@ -99,6 +113,9 @@ export default function App() {
         {/* Products Catalogue */}
         <Products onOrderProduct={handleOrderProduct} />
 
+        {/* Sinf uchun chegirma kalkulyatori */}
+        <DiscountCalculator onOrderGroup={handleOrderProduct} />
+
         {/* About section / Advantages */}
         <About />
 
@@ -116,11 +133,14 @@ export default function App() {
       </main>
 
       {/* Footer information */}
-      <Footer />
+      <div className="pb-24 md:pb-0">
+        <Footer />
+      </div>
 
       {/* Interactive Utilities */}
       <ScrollToTop />
       <FloatingActions />
+      <MobileBottomNav onOpenOrderModal={handleOpenOrderModal} />
 
       {/* Form Order Modal */}
       <OrderModal
@@ -129,6 +149,7 @@ export default function App() {
         selectedProduct={selectedProduct}
         selectedTemplate={selectedTemplate}
         initialQuantity={initialQuantity}
+        initialComment={initialComment}
         onSuccessToast={showToast}
       />
     </div>

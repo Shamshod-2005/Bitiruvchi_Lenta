@@ -47,18 +47,18 @@ export default function Contact() {
   ];
 
   return (
-    <section id="kontakt" className="py-24 bg-white">
+    <section id="kontakt" className="py-24 bg-white dark:bg-editorial-dark transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-gold font-bold text-xs uppercase tracking-widest">
             {t("contact.eyebrow")}
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold font-serif text-editorial-dark mt-2">
+          <h2 className="text-3xl sm:text-4xl font-bold text-editorial-dark dark:text-gray-100 mt-2 transition-colors duration-300">
             {t("contact.title")}
           </h2>
           <div className="w-16 h-0.5 bg-gold mx-auto mt-4" />
-          <p className="text-gray-600 mt-4 leading-relaxed font-light text-sm sm:text-base">
+          <p className="text-gray-600 dark:text-gray-400 mt-4 leading-relaxed font-light text-sm sm:text-base transition-colors duration-300">
             {t("contact.description")}
           </p>
         </div>
@@ -68,7 +68,7 @@ export default function Contact() {
           {/* Contact Details Column */}
           <div className="lg:col-span-5 flex flex-col gap-5 justify-between">
             <div className="space-y-5">
-              <h3 className="text-xl font-bold font-serif text-editorial-dark mb-6 flex items-center gap-2">
+              <h3 className="text-xl font-bold text-editorial-dark dark:text-gray-100 mb-6 flex items-center gap-2 transition-colors duration-300">
                 <span className="text-gold">📍</span>{" "}
                 {t("contact.detailsTitle")}
               </h3>
@@ -77,7 +77,7 @@ export default function Contact() {
                 {contactInfo.map((info) => (
                   <div
                     key={info.id}
-                    className="p-5 rounded-3xl border border-gold/10 bg-warm-bg/25 flex gap-4 items-start hover:border-gold/30 transition-colors"
+                    className="p-5 rounded-3xl border border-gold/10 bg-warm-bg/25 dark:bg-white/5 flex gap-4 items-start hover:border-gold/30 transition-colors duration-300"
                   >
                     <div className="w-10 h-10 rounded-2xl bg-gold/10 flex items-center justify-center shrink-0 border border-gold/10">
                       {info.icon}
@@ -91,17 +91,17 @@ export default function Contact() {
                           href={info.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-base font-serif font-bold text-editorial-dark hover:text-gold mt-1 flex items-center gap-1 cursor-pointer"
+                          className="text-base font-bold text-editorial-dark dark:text-gray-100 hover:text-gold mt-1 flex items-center gap-1 cursor-pointer transition-colors duration-300"
                         >
                           {info.value}{" "}
                           <ExternalLink className="w-3.5 h-3.5 text-gray-400" />
                         </a>
                       ) : (
-                        <p className="text-base font-serif font-bold text-editorial-dark mt-1">
+                        <p className="text-base font-bold text-editorial-dark dark:text-gray-100 mt-1 transition-colors duration-300">
                           {info.value}
                         </p>
                       )}
-                      <p className="text-xs text-gray-500 mt-0.5 leading-relaxed font-light">
+                      <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5 leading-relaxed font-light transition-colors duration-300">
                         {info.sub}
                       </p>
                     </div>
@@ -116,10 +116,10 @@ export default function Contact() {
                 <MapPin className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="font-serif font-bold text-editorial-dark text-sm">
+                <h4 className="font-bold text-editorial-dark dark:text-gray-100 text-sm transition-colors duration-300">
                   {t("contact.addressTitle")}
                 </h4>
-                <p className="text-xs text-gray-600 leading-relaxed font-light mt-1">
+                <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed font-light mt-1 transition-colors duration-300">
                   {t("contact.address")}
                 </p>
               </div>
@@ -147,7 +147,7 @@ export default function Contact() {
                 title={t("contact.mapTitle")}
                 id="gmaps-iframe"
               />
-              <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full shadow-md border border-gold/10 text-[10px] text-gold font-bold uppercase tracking-widest pointer-events-none">
+              <div className="absolute top-4 left-4 bg-white/95 dark:bg-editorial-dark/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-md border border-gold/10 text-[10px] text-gold font-bold uppercase tracking-widest pointer-events-none">
                 {t("contact.mapBadge")}
               </div>
             </motion.div>

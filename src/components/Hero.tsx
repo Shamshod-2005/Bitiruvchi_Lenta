@@ -57,10 +57,10 @@ export default function Hero({ onOpenOrderModal }: HeroProps) {
   return (
     <section
       id="bosh-sahifa"
-      className="relative min-h-screen pt-28 pb-16 flex items-center overflow-hidden bg-warm-bg"
+      className="relative min-h-screen pt-28 pb-16 flex items-center overflow-hidden bg-warm-bg dark:bg-editorial-dark transition-colors duration-300"
     >
       {/* Decorative background watermarks & glows */}
-      <div className="absolute top-10 left-12 opacity-[0.03] font-serif text-[180px] lg:text-[280px] select-none leading-none z-0 pointer-events-none">
+      <div className="absolute top-10 left-12 opacity-[0.03] text-[180px] lg:text-[280px] select-none leading-none z-0 pointer-events-none">
         2026
       </div>
       <div className="absolute top-1/4 -right-64 w-125 h-125 rounded-full bg-gold/5 blur-3xl pointer-events-none" />
@@ -80,7 +80,7 @@ export default function Hero({ onOpenOrderModal }: HeroProps) {
                 ✨ {t("hero.badge")}
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-serif text-editorial-dark leading-[1.12] tracking-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-editorial-dark dark:text-gray-100 leading-[1.12] tracking-tight transition-colors duration-300">
                 {t("hero.title").split(" ").slice(0, 2).join(" ")} <br />
                 <span className="text-gold">
                   {t("hero.title").split(" ").slice(2, 4).join(" ")}
@@ -89,7 +89,7 @@ export default function Hero({ onOpenOrderModal }: HeroProps) {
                 {t("hero.title").split(" ").slice(4).join(" ")}
               </h1>
 
-              <p className="text-base sm:text-lg text-gray-600 max-w-xl mx-auto lg:mx-0 font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-xl mx-auto lg:mx-0 font-light leading-relaxed transition-colors duration-300">
                 {t("hero.description")}
               </p>
             </motion.div>
@@ -103,13 +103,13 @@ export default function Hero({ onOpenOrderModal }: HeroProps) {
             >
               <button
                 onClick={onOpenOrderModal}
-                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-editorial-dark hover:bg-gold text-white font-bold text-sm tracking-wider uppercase shadow-xl shadow-editorial-dark/10 transition-all focus:outline-none hover:-translate-y-0.5"
+                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-editorial-dark dark:bg-gold hover:bg-gold text-white dark:text-editorial-dark dark:hover:text-white font-bold text-sm tracking-wider uppercase shadow-xl shadow-editorial-dark/10 transition-all focus:outline-none hover:-translate-y-0.5"
               >
                 {t("hero.ctaPrimary")}
               </button>
               <button
                 onClick={handleScrollToProducts}
-                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white border-2 border-gold/30 text-gold hover:bg-gold hover:text-white font-bold text-sm tracking-wider uppercase transition-all focus:outline-none hover:-translate-y-0.5"
+                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white dark:bg-white/5 border-2 border-gold/30 text-gold hover:bg-gold hover:text-white font-bold text-sm tracking-wider uppercase transition-all focus:outline-none hover:-translate-y-0.5"
               >
                 {t("hero.ctaSecondary")}
               </button>
@@ -117,7 +117,7 @@ export default function Hero({ onOpenOrderModal }: HeroProps) {
 
             {/* Stats Indicators Grid */}
             <motion.div
-              initial={{ opacity: 0 }}
+              initial={{ opacity: 0 }} 
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-gold/20"
@@ -125,15 +125,15 @@ export default function Hero({ onOpenOrderModal }: HeroProps) {
               {stats.map((stat) => (
                 <div
                   key={stat.id}
-                  className="text-center lg:text-left p-3 rounded-xl hover:bg-white/50 transition-colors duration-300"
+                  className="text-center lg:text-left p-3 rounded-xl hover:bg-white/50 dark:hover:bg-white/5 transition-colors duration-300"
                 >
                   <div className="flex justify-center lg:justify-start mb-1.5">
                     {stat.icon}
                   </div>
-                  <p className="text-2xl sm:text-3xl font-serif font-bold text-editorial-dark">
+                  <p className="text-2xl sm:text-3xl font-bold text-editorial-dark dark:text-gray-100 transition-colors duration-300">
                     {stat.value}
                   </p>
-                  <p className="text-xs uppercase tracking-widest text-gray-500 mt-1 font-medium">
+                  <p className="text-xs uppercase tracking-widest text-gray-500 dark:text-gray-400 mt-1 font-medium transition-colors duration-300">
                     {stat.label}
                   </p>
                 </div>
@@ -147,7 +147,7 @@ export default function Hero({ onOpenOrderModal }: HeroProps) {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, type: "spring" }}
-              className="relative w-full max-w-105 aspect-4/5 rounded-3xl overflow-hidden shadow-2xl border border-gold/10 bg-white group"
+              className="relative w-full max-w-105 aspect-4/5 rounded-3xl overflow-hidden shadow-2xl border border-gold/10 bg-white dark:bg-white/5 group transition-colors duration-300"
               id="hero-image-showcase"
             >
               <img
@@ -161,7 +161,7 @@ export default function Hero({ onOpenOrderModal }: HeroProps) {
                 <span className="text-gold text-[10px] uppercase tracking-widest font-bold">
                   {t("hero.imageBadge")}
                 </span>
-                <h3 className="text-white text-xl sm:text-2xl font-serif font-bold mt-1">
+                <h3 className="text-white text-xl sm:text-2xl font-bold mt-1">
                   {t("hero.imageTitle")}
                 </h3>
                 <p className="text-gray-300 text-xs sm:text-sm mt-2 font-light leading-relaxed">

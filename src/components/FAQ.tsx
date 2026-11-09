@@ -17,18 +17,18 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-24 bg-warm-bg/40 border-b border-gold/10">
+    <section id="faq" className="py-24 bg-warm-bg/40 dark:bg-editorial-dark border-b border-gold/10 transition-colors duration-300">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-gold font-bold text-xs uppercase tracking-widest">
             {t("faq.eyebrow")}
           </span>
-          <h2 className="text-3xl font-bold font-serif text-editorial-dark mt-2">
+          <h2 className="text-3xl font-bold text-editorial-dark dark:text-gray-100 mt-2 transition-colors duration-300">
             {t("faq.title")}
           </h2>
           <div className="w-16 h-0.5 bg-gold mx-auto mt-4" />
-          <p className="text-gray-500 mt-4 leading-relaxed font-light text-sm">
+          <p className="text-gray-500 dark:text-gray-400 mt-4 leading-relaxed font-light text-sm transition-colors duration-300">
             {t("faq.description")}
           </p>
         </div>
@@ -40,7 +40,7 @@ export default function FAQ() {
             return (
               <div
                 key={faq.id}
-                className={`bg-white rounded-3xl border transition-all duration-300 overflow-hidden ${
+                className={`bg-white dark:bg-white/5 rounded-3xl border transition-all duration-300 overflow-hidden ${
                   isOpen
                     ? "border-gold shadow-lg shadow-gold/5"
                     : "border-gold/10 shadow-sm"
@@ -50,12 +50,12 @@ export default function FAQ() {
                 {/* Header Button */}
                 <button
                   onClick={() => toggleFAQ(faq.id)}
-                  className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 font-semibold text-editorial-dark focus:outline-none"
+                  className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 font-semibold text-editorial-dark dark:text-gray-100 focus:outline-none"
                   aria-expanded={isOpen}
                   aria-controls={`faq-answer-${faq.id}`}
                   id={`faq-btn-${faq.id}`}
                 >
-                  <span className="flex items-center gap-3 text-sm sm:text-base leading-tight font-serif font-bold">
+                  <span className="flex items-center gap-3 text-sm sm:text-base leading-tight font-bold">
                     <HelpCircle
                       className={`w-5 h-5 shrink-0 transition-colors ${isOpen ? "text-gold" : "text-gray-400"}`}
                     />
@@ -79,7 +79,7 @@ export default function FAQ() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 pb-6 pt-1 text-xs sm:text-sm text-gray-600 leading-relaxed font-light border-t border-gold/5">
+                      <div className="px-6 pb-6 pt-1 text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-light border-t border-gold/5">
                         {faq.answer}
                       </div>
                     </motion.div>

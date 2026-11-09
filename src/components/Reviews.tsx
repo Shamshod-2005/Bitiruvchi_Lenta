@@ -12,18 +12,18 @@ export default function Reviews() {
   };
 
   return (
-    <section id="reviews" className="py-24 bg-white border-b border-gold/10">
+    <section id="reviews" className="py-24 bg-white dark:bg-editorial-dark border-b border-gold/10 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-gold font-bold text-xs uppercase tracking-widest">
             {t("reviews.eyebrow")}
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold font-serif text-editorial-dark mt-2">
+          <h2 className="text-3xl sm:text-4xl font-bold text-editorial-dark dark:text-gray-100 mt-2 transition-colors duration-300">
             {t("reviews.title")}
           </h2>
           <div className="w-16 h-0.5 bg-gold mx-auto mt-4" />
-          <p className="text-gray-600 mt-4 leading-relaxed font-light text-sm sm:text-base">
+          <p className="text-gray-600 dark:text-gray-400 mt-4 leading-relaxed font-light text-sm sm:text-base transition-colors duration-300">
             {t("reviews.description")}
           </p>
         </div>
@@ -38,7 +38,7 @@ export default function Reviews() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.15 }}
               whileHover={{ y: -6 }}
-              className="relative p-8 bg-warm-bg/25 border border-gold/10 hover:border-gold/30 rounded-3xl shadow-sm hover:shadow-xl transition-all flex flex-col justify-between"
+              className="relative p-8 bg-warm-bg/25 dark:bg-white/5 border border-gold/10 hover:border-gold/30 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
               id={`review-card-${review.id}`}
             >
               {/* Quote Icon */}
@@ -51,7 +51,7 @@ export default function Reviews() {
                 <div className="flex gap-1">{renderStars(review.rating)}</div>
 
                 {/* Comment */}
-                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed font-light italic">
+                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-light italic transition-colors duration-300">
                   "{review.comment}"
                 </p>
               </div>
@@ -59,7 +59,7 @@ export default function Reviews() {
               {/* Author info */}
               <div className="mt-8 pt-5 border-t border-gold/5 flex items-center justify-between">
                 <div>
-                  <h4 className="font-bold text-editorial-dark text-sm">
+                  <h4 className="font-bold text-editorial-dark dark:text-gray-100 text-sm transition-colors duration-300">
                     {review.name}
                   </h4>
                   <p className="text-[10px] text-gold uppercase tracking-wider font-semibold mt-0.5">
@@ -81,7 +81,7 @@ export default function Reviews() {
           <div className="flex items-center gap-4 text-center sm:text-left relative z-10">
             <div className="text-4xl">🌟</div>
             <div>
-              <h3 className="font-serif text-white text-xl font-bold">
+              <h3 className="text-white text-xl font-bold">
                 {t("reviews.summaryTitle")}
               </h3>
               <p className="text-xs text-gray-400 font-light mt-1">

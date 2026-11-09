@@ -9,6 +9,7 @@
   },
   "navbar": {
     "home": "Bosh sahifa",
+    "constructor": "Konstruktor",
     "products": "Mahsulotlar",
     "about": "Biz haqimizda",
     "gallery": "Galereya",
@@ -16,7 +17,9 @@
     "contact": "Kontakt",
     "menuToggle": "Menuni ochish/yopish",
     "mobileMenuTitle": "Navigatsiya",
-    "deliveryText": "O'zbekiston bo'ylab tezkor yetkazib berish"
+    "deliveryText": "O'zbekiston bo'ylab tezkor yetkazib berish",
+    "themeToggleDark": "Tungi rejimga o'tish",
+    "themeToggleLight": "Kunduzgi rejimga o'tish"
   },
   "hero": {
     "badge": "O'zbekistonda 1-raqamli premium lentalar",
@@ -233,5 +236,12 @@
     "success": "Buyurtmangiz muvaffaqiyatli yuborildi.",
     "successSimulated": "Buyurtmangiz muvaffaqiyatli yuborildi. (Simulyatsiya)",
     "error": "Buyurtma yuborishda xatolik yuz berdi. Qayta urinib ko'ring."
+  },
+  "bottomNav": {
+    "home": "Bosh sahifa",
+    "templates": "Shablonlar",
+    "order": "Buyurtma",
+    "gallery": "Galereya",
+    "contact": "Aloqa"
   }
 }

@@ -40,7 +40,7 @@ export default function TemplateModal({
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.96, y: 20 }}
             transition={{ duration: 0.24 }}
-            className="relative flex w-full max-w-4xl flex-col overflow-hidden rounded-4xl border border-gold/10 bg-white shadow-2xl"
+            className="relative flex w-full max-w-4xl flex-col overflow-hidden rounded-4xl border border-gold/10 bg-white dark:bg-editorial-dark shadow-2xl"
             role="dialog"
             aria-modal="true"
             aria-labelledby="template-modal-title"
@@ -52,7 +52,7 @@ export default function TemplateModal({
                 </p>
                 <h3
                   id="template-modal-title"
-                  className="mt-1 text-xl font-semibold text-editorial-dark"
+                  className="mt-1 text-xl font-semibold text-editorial-dark dark:text-gray-100"
                 >
                   {template.title}
                 </h3>
@@ -60,15 +60,15 @@ export default function TemplateModal({
               <button
                 type="button"
                 onClick={onClose}
-                className="rounded-full border border-gold/10 p-2 text-gray-500 transition-colors hover:border-gold hover:text-gold"
+                className="rounded-full border border-gold/10 p-2 text-gray-500 dark:text-gray-400 transition-colors hover:border-gold hover:text-gold"
                 aria-label="Yopish"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto bg-warm-bg/40 p-5 sm:p-8">
-              <div className="overflow-hidden rounded-3xl border border-gold/10 bg-white p-4 shadow-inner">
+            <div className="flex-1 overflow-y-auto bg-warm-bg/40 dark:bg-white/5 p-5 sm:p-8">
+              <div className="overflow-hidden rounded-3xl border border-gold/10 bg-white dark:bg-editorial-dark p-4 shadow-inner">
                 <div className="flex items-center justify-end gap-2 pb-4">
                   <button
                     type="button"
@@ -77,12 +77,12 @@ export default function TemplateModal({
                         Math.max(1, Number((value - 0.25).toFixed(2))),
                       )
                     }
-                    className="rounded-full border border-slate-200 p-2 text-slate-600 transition-colors hover:border-blue-500 hover:text-blue-600"
+                    className="rounded-full border border-slate-200 dark:border-white/10 p-2 text-slate-600 dark:text-gray-300 transition-colors hover:border-blue-500 hover:text-blue-600"
                     aria-label="Kichraytirish"
                   >
                     <Minus className="h-4 w-4" />
                   </button>
-                  <span className="min-w-12 text-center text-sm font-semibold text-editorial-dark">
+                  <span className="min-w-12 text-center text-sm font-semibold text-editorial-dark dark:text-gray-100">
                     {zoom.toFixed(2)}x
                   </span>
                   <button
@@ -92,14 +92,14 @@ export default function TemplateModal({
                         Math.min(2, Number((value + 0.25).toFixed(2))),
                       )
                     }
-                    className="rounded-full border border-slate-200 p-2 text-slate-600 transition-colors hover:border-blue-500 hover:text-blue-600"
+                    className="rounded-full border border-slate-200 dark:border-white/10 p-2 text-slate-600 dark:text-gray-300 transition-colors hover:border-blue-500 hover:text-blue-600"
                     aria-label="Kattalashtirish"
                   >
                     <Plus className="h-4 w-4" />
                   </button>
                 </div>
 
-                <div className="flex min-h-80 items-center justify-center overflow-auto bg-warm-bg/50 p-2 sm:p-4">
+                <div className="flex min-h-80 items-center justify-center overflow-auto bg-warm-bg/50 dark:bg-white/5 p-2 sm:p-4">
                   <img
                     src={template.image}
                     alt={template.title}
@@ -110,9 +110,9 @@ export default function TemplateModal({
               </div>
             </div>
 
-            <div className="flex flex-col gap-3 border-t border-gold/10 bg-white px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+            <div className="flex flex-col gap-3 border-t border-gold/10 bg-white dark:bg-editorial-dark px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8">
               <div>
-                <p className="text-sm text-gray-500">{template.description}</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">{template.description}</p>
               </div>
               <button
                 type="button"

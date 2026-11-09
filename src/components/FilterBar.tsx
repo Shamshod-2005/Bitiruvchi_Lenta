@@ -32,7 +32,7 @@ export default function FilterBar({
             className={`rounded-full border px-4 py-2 text-sm font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gold/10 ${
               isActive
                 ? "border-gold bg-gold text-white shadow-md shadow-gold/20"
-                : "border-gold/10 bg-white text-gray-600 hover:border-gold hover:text-gold"
+                : "border-gold/10 bg-white dark:bg-white/5 text-gray-600 dark:text-gray-300 hover:border-gold hover:text-gold"
             }`}
             aria-pressed={isActive}
           >

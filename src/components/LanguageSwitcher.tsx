@@ -33,14 +33,14 @@ export default function LanguageSwitcher() {
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        className="flex items-center gap-2 rounded-full border border-gold/20 bg-white/90 px-3 py-1.5 text-sm font-semibold text-gray-700 shadow-sm backdrop-blur"
+        className="flex items-center gap-2 h-10 rounded-full border border-gold/25 bg-white/70 dark:bg-white/5 hover:border-gold/50 px-3.5 text-xs font-bold text-gray-700 dark:text-gray-200 shadow-xs backdrop-blur transition-all duration-200 cursor-pointer"
       >
         <span>{currentLabel?.flag}</span>
         <span className="uppercase">{currentLanguage}</span>
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-36 rounded-2xl border border-gold/10 bg-white p-2 shadow-xl">
+        <div className="absolute right-0 mt-2 w-36 rounded-2xl border border-gold/10 bg-white dark:bg-editorial-dark p-2 shadow-xl transition-colors duration-300">
           {languages.map((language) => (
             <button
               key={language.code}
@@ -49,7 +49,7 @@ export default function LanguageSwitcher() {
               className={`flex w-full items-center gap-2 rounded-xl px-3 py-2 text-sm transition-colors ${
                 currentLanguage === language.code
                   ? "bg-gold text-white"
-                  : "text-gray-700 hover:bg-gold/10 hover:text-gold"
+                  : "text-gray-700 dark:text-gray-300 hover:bg-gold/10 hover:text-gold"
               }`}
             >
               <span>{language.flag}</span>

@@ -9,11 +9,14 @@
   },
   "navbar": {
     "home": "Home",
+    "constructor": "Constructor",
     "products": "Products",
     "about": "About us",
     "gallery": "Gallery",
     "faq": "FAQ",
-    "contact": "Contact"
+    "contact": "Contact",
+    "themeToggleDark": "Switch to dark mode",
+    "themeToggleLight": "Switch to light mode"
   },
   "hero": {
     "badge": "Premium ribbons #1 in Uzbekistan",
@@ -230,5 +233,12 @@
     "success": "Your order has been sent successfully.",
     "successSimulated": "Your order has been sent successfully. (Simulation)",
     "error": "An error occurred while submitting the order. Please try again."
+  },
+  "bottomNav": {
+    "home": "Home",
+    "templates": "Templates",
+    "order": "Order",
+    "gallery": "Gallery",
+    "contact": "Contact"
   }
 }

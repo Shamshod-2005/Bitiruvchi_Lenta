@@ -20,7 +20,7 @@ export default function SearchBar({
         value={value}
         onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder}
-        className="w-full rounded-full border border-gold/10 bg-warm-bg/50 py-3 pl-11 pr-4 text-sm text-editorial-dark shadow-sm outline-none transition-all duration-300 placeholder:text-gray-400 focus:border-gold focus:ring-2 focus:ring-gold/10"
+        className="w-full rounded-full border border-gold/10 bg-warm-bg/50 dark:bg-white/5 py-3 pl-11 pr-4 text-sm text-editorial-dark dark:text-gray-100 shadow-sm outline-none transition-all duration-300 placeholder:text-gray-400 focus:border-gold focus:ring-2 focus:ring-gold/10"
         aria-label="Qidirish"
       />
     </label>

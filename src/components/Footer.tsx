@@ -40,7 +40,7 @@ export default function Footer() {
 
   return (
     <footer
-      className="bg-editorial-dark text-gray-400 pt-20 pb-10 border-t border-gold/20"
+      className="bg-editorial-dark dark:bg-black text-gray-400 pt-20 pb-10 border-t border-gold/20 transition-colors duration-300"
       id="app-footer"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -51,7 +51,7 @@ export default function Footer() {
               <div className="w-10 h-10 bg-gold rounded-full flex items-center justify-center text-white shadow-lg shadow-gold/20">
                 <GraduationCap className="w-5 h-5" />
               </div>
-              <span className="text-2xl font-bold font-serif text-white tracking-tight">
+              <span className="text-2xl font-bold text-white tracking-tight">
                 {t("footer.brandLine")}
               </span>
             </div>
@@ -70,7 +70,7 @@ export default function Footer() {
 
           {/* Column 2: Quick Links */}
           <div className="lg:col-span-3 lg:col-start-6 space-y-4">
-            <h3 className="text-white text-xs font-bold uppercase tracking-widest font-serif border-b border-gold/10 pb-2">
+            <h3 className="text-white text-xs font-bold uppercase tracking-widest border-b border-gold/10 pb-2">
               {t("footer.quickLinks")}
             </h3>
             <ul className="space-y-2.5 text-xs font-medium uppercase tracking-wider">
@@ -91,7 +91,7 @@ export default function Footer() {
 
           {/* Column 3: Contact & Support */}
           <div className="lg:col-span-4 space-y-4">
-            <h3 className="text-white text-xs font-bold uppercase tracking-widest font-serif border-b border-gold/10 pb-2">
+            <h3 className="text-white text-xs font-bold uppercase tracking-widest border-b border-gold/10 pb-2">
               {t("footer.contact")}
             </h3>
             <ul className="space-y-3.5 text-xs sm:text-sm font-light">
@@ -103,7 +103,7 @@ export default function Footer() {
                 <Phone className="w-4 h-4 text-gold shrink-0" />
                 <a
                   href="tel:+998901234567"
-                  className="hover:text-gold transition-colors font-bold text-white font-serif text-sm"
+                  className="hover:text-gold transition-colors font-bold text-white text-sm"
                 >
                   +998 94 011 52 44
                 </a>

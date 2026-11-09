@@ -25,13 +25,13 @@ export default function TemplateCard({
       exit={{ opacity: 0, scale: 0.96 }}
       whileHover={{ scale: 1.02, y: -4 }}
       transition={{ duration: 0.25, ease: "easeOut" }}
-      className={`group relative overflow-hidden rounded-3xl border bg-white shadow-md transition-all duration-300 ${
+      className={`group relative overflow-hidden rounded-3xl border bg-white dark:bg-white/5 shadow-md transition-all duration-300 ${
         isSelected
           ? "border-gold shadow-lg shadow-gold/20 ring-2 ring-gold/10"
           : "border-gold/10 hover:border-gold hover:shadow-xl"
       }`}
     >
-      <div className="relative aspect-[5/1] overflow-hidden bg-warm-bg/40">
+      <div className="relative aspect-[5/1] overflow-hidden bg-warm-bg/40 dark:bg-white/5">
         <img
           src={template.image}
           alt={template.title}
@@ -73,14 +73,14 @@ export default function TemplateCard({
       <div className="space-y-4 p-5">
         <div className="space-y-1">
           <div className="flex items-start justify-between gap-3">
-            <h3 className="text-lg font-semibold text-editorial-dark">
+            <h3 className="text-lg font-semibold text-editorial-dark dark:text-gray-100">
               {template.title}
             </h3>
-            <span className="rounded-full bg-warm-bg px-3 py-1 text-[11px] font-medium text-gold">
+            <span className="rounded-full bg-warm-bg dark:bg-white/10 px-3 py-1 text-[11px] font-medium text-gold">
               {template.category}
             </span>
           </div>
-          <p className="text-sm leading-6 text-gray-500">
+          <p className="text-sm leading-6 text-gray-500 dark:text-gray-400">
             {template.description}
           </p>
         </div>
@@ -89,7 +89,7 @@ export default function TemplateCard({
           <button
             type="button"
             onClick={() => onPreview(template)}
-            className="flex-1 rounded-full border border-gold/15 px-4 py-2.5 text-sm font-semibold text-editorial-dark transition-all duration-300 hover:border-gold hover:text-gold"
+            className="flex-1 rounded-full border border-gold/15 px-4 py-2.5 text-sm font-semibold text-editorial-dark dark:text-gray-100 transition-all duration-300 hover:border-gold hover:text-gold"
           >
             Ko‘rish
           </button>

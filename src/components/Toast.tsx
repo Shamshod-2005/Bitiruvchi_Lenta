@@ -23,10 +23,10 @@ export default function Toast({ message, type, onClose }: ToastProps) {
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: -20, scale: 0.95 }}
       transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-      className={`fixed top-24 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 px-5 py-3.5 rounded-2xl shadow-xl border w-[90%] max-w-md ${
+      className={`fixed top-24 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 px-5 py-3.5 rounded-2xl shadow-xl border w-[90%] max-w-md transition-colors duration-300 ${
         type === 'success'
-          ? 'bg-emerald-50 border-emerald-100 text-emerald-800'
-          : 'bg-rose-50 border-rose-100 text-rose-800'
+          ? 'bg-emerald-50 dark:bg-emerald-950 border-emerald-100 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200'
+          : 'bg-rose-50 dark:bg-rose-950 border-rose-100 dark:border-rose-800 text-rose-800 dark:text-rose-200'
       }`}
       id="custom-toast-alert"
     >
@@ -44,7 +44,7 @@ export default function Toast({ message, type, onClose }: ToastProps) {
 
       <button
         onClick={onClose}
-        className="p-1 rounded-full hover:bg-black/5 text-gray-400 hover:text-gray-600 transition-colors"
+        className="p-1 rounded-full hover:bg-black/5 dark:hover:bg-white/10 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors"
         aria-label="Yopish"
       >
         <X className="w-4 h-4" />

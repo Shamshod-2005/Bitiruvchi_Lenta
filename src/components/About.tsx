@@ -40,7 +40,7 @@ export default function About() {
   return (
     <section
       id="biz-haqimizda"
-      className="py-24 bg-white border-b border-gold/10"
+      className="py-24 bg-white dark:bg-editorial-dark border-b border-gold/10 transition-colors duration-300"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
@@ -54,11 +54,11 @@ export default function About() {
             <span className="text-gold font-bold text-xs uppercase tracking-widest">
               {t("about.eyebrow")}
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold font-serif text-editorial-dark mt-2">
+            <h2 className="text-3xl sm:text-4xl font-bold text-editorial-dark dark:text-gray-100 mt-2 transition-colors duration-300">
               {t("about.title")}
             </h2>
             <div className="w-16 h-0.5 bg-gold mx-auto mt-4" />
-            <p className="text-gray-600 mt-4 leading-relaxed font-light text-sm sm:text-base">
+            <p className="text-gray-600 dark:text-gray-400 mt-4 leading-relaxed font-light text-sm sm:text-base transition-colors duration-300">
               {t("about.description")}
             </p>
           </motion.div>
@@ -74,17 +74,17 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -5 }}
-              className="p-6 rounded-3xl border border-gold/10 bg-warm-bg/25 shadow-sm hover:shadow-xl hover:border-gold/30 transition-all flex flex-col justify-between"
+              className="p-6 rounded-3xl border border-gold/10 bg-warm-bg/25 dark:bg-white/5 shadow-sm hover:shadow-xl hover:border-gold/30 transition-all duration-300 flex flex-col justify-between"
               id={adv.id}
             >
               <div>
                 <div className="w-12 h-12 rounded-2xl bg-gold/10 flex items-center justify-center mb-5 border border-gold/10">
                   {adv.icon}
                 </div>
-                <h3 className="text-lg font-serif font-bold text-editorial-dark mb-2">
+                <h3 className="text-lg font-bold text-editorial-dark dark:text-gray-100 mb-2 transition-colors duration-300">
                   {adv.title}
                 </h3>
-                <p className="text-xs text-gray-500 leading-relaxed font-light">
+                <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed font-light transition-colors duration-300">
                   {adv.desc}
                 </p>
               </div>
