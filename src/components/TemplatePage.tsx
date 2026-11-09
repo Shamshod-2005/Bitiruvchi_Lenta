@@ -56,7 +56,7 @@ export default function TemplatePage({
   return (
     <section
       id="shablonlar"
-      className="border-b border-gold/10 bg-warm-bg/40 dark:bg-editorial-dark py-20 transition-colors duration-300 sm:py-24"
+      className="border-b border-gold/10 bg-warm-bg/40 dark:bg-white/5 py-12 sm:py-20 transition-colors duration-300"
     >
       <div className="mx-auto flex max-w-7xl flex-col gap-10 px-6 lg:px-8">
         <motion.div

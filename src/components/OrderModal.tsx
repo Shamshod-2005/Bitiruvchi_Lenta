@@ -1,7 +1,16 @@
 import { useEffect, useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { motion, AnimatePresence } from "motion/react";
-import { X, Check, AlertTriangle, Loader2, ChevronDown, MapPin } from "lucide-react";
+import {
+  X,
+  Check,
+  AlertTriangle,
+  Loader2,
+  ChevronDown,
+  MapPin,
+  Zap,
+  ClipboardList,
+} from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { OrderFormData, Product, Template } from "../types";
 import { products } from "../data/products";
@@ -43,6 +52,7 @@ export default function OrderModal({
   onSuccessToast,
 }: OrderModalProps) {
   const { t } = useTranslation();
+  const [orderMode, setOrderMode] = useState<"quick" | "full">("quick");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isProductDropdownOpen, setIsProductDropdownOpen] = useState(false);
   const [isRegionDropdownOpen, setIsRegionDropdownOpen] = useState(false);
@@ -56,6 +66,7 @@ export default function OrderModal({
     reset,
     setValue,
     watch,
+    clearErrors,
     formState: { errors },
   } = useForm<OrderFormData>({
     defaultValues: {
@@ -70,6 +81,13 @@ export default function OrderModal({
       comment: "",
     },
   });
+
+  const handleModeChange = (mode: "quick" | "full") => {
+    setOrderMode(mode);
+    if (mode === "quick") {
+      clearErrors(["institution", "group", "region", "address"]);
+    }
+  };
 
   const selectedProductWatcher = watch("productName");
   const quantityWatcher = watch("quantity");
@@ -146,10 +164,21 @@ export default function OrderModal({
       ? `\n🖼 <b>Tanlangan shablon:</b> #${selectedTemplate.id} — ${escapeHtml(selectedTemplate.title)} (${escapeHtml(selectedTemplate.category)})`
       : "";
 
-    const telegramMessageHtml = `🎓 <b>YANGI BUYURTMA</b>
+    const isQuick = orderMode === "quick";
+
+    const telegramMessageHtml = isQuick
+      ? `⚡️ <b>YANGI TEZKOR BUYURTMA</b> (Qayta qo'ng'iroq)
 
 👤 <b>Ism:</b> ${escapeHtml(data.fullName)}
-📞 <b>Telefon:</b> ${escapeHtml(data.phone)}
+📞 <b>Telefon:</b> <a href="tel:${escapeHtml(data.phone)}">${escapeHtml(data.phone)}</a>
+🎗 <b>Mahsulot:</b> ${escapeHtml(data.productName)}${templateContext}
+📦 <b>Soni:</b> ${data.quantity || 1} dona
+💰 <b>Umumiy summa:</b> ${totalPrice.toLocaleString("uz-UZ")} so'm
+📝 <b>Izoh:</b> ${escapeHtml(data.comment || "Yo'q")}`
+      : `🎓 <b>YANGI BUYURTMA</b>
+
+👤 <b>Ism:</b> ${escapeHtml(data.fullName)}
+📞 <b>Telefon:</b> <a href="tel:${escapeHtml(data.phone)}">${escapeHtml(data.phone)}</a>
 🏫 <b>Ta'lim muassasasi:</b> ${escapeHtml(data.institution)}
 🎓 <b>Sinf yoki kurs:</b> ${escapeHtml(data.group)}
 🎗 <b>Mahsulot:</b> ${escapeHtml(data.productName)}${templateContext}
@@ -159,7 +188,16 @@ export default function OrderModal({
 🏠 <b>Manzil:</b> ${escapeHtml(data.address)}
 📝 <b>Izoh:</b> ${escapeHtml(data.comment || "Yo'q")}`;
 
-    const plainMessage = `🎓 YANGI BUYURTMA
+    const plainMessage = isQuick
+      ? `⚡️ YANGI TEZKOR BUYURTMA (Qayta qo'ng'iroq)
+
+👤 Ism: ${data.fullName}
+📞 Telefon: ${data.phone}
+🎗 Mahsulot: ${data.productName}
+📦 Soni: ${data.quantity || 1} dona
+💰 Umumiy summa: ${totalPrice.toLocaleString("uz-UZ")} so'm
+📝 Izoh: ${data.comment || "Yo'q"}`
+      : `🎓 YANGI BUYURTMA
 
 👤 Ism: ${data.fullName}
 📞 Telefon: ${data.phone}
@@ -301,6 +339,44 @@ export default function OrderModal({
               className="overflow-y-auto p-6 space-y-5 flex-1"
               id="order-modal-form"
             >
+              {/* Order Mode Switcher Tabs */}
+              <div className="space-y-2">
+                <div className="grid grid-cols-2 p-1 bg-warm-bg dark:bg-white/5 rounded-2xl border border-gold/15">
+                  <button
+                    type="button"
+                    onClick={() => handleModeChange("quick")}
+                    className={`py-2.5 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${
+                      orderMode === "quick"
+                        ? "bg-gold text-white shadow-md shadow-gold/25"
+                        : "text-gray-600 dark:text-gray-400 hover:text-gold"
+                    }`}
+                  >
+                    <Zap className="w-3.5 h-3.5 fill-current" />
+                    <span>{t("modal.quickOrderTab")}</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleModeChange("full")}
+                    className={`py-2.5 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${
+                      orderMode === "full"
+                        ? "bg-gold text-white shadow-md shadow-gold/25"
+                        : "text-gray-600 dark:text-gray-400 hover:text-gold"
+                    }`}
+                  >
+                    <ClipboardList className="w-3.5 h-3.5" />
+                    <span>{t("modal.fullOrderTab")}</span>
+                  </button>
+                </div>
+
+                {orderMode === "quick" && (
+                  <div className="p-3 rounded-2xl bg-gold/10 border border-gold/20 flex items-center gap-2.5 text-xs text-gold">
+                    <Zap className="w-4 h-4 shrink-0 fill-gold" />
+                    <p className="font-medium text-[11px] leading-tight">
+                      {t("modal.quickOrderHint")}
+                    </p>
+                  </div>
+                )}
+              </div>
               {selectedTemplate && (
                 <div className="rounded-3xl border border-gold/15 bg-warm-bg/70 dark:bg-white/5 p-4">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-gold">
@@ -411,59 +487,67 @@ export default function OrderModal({
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {/* School or University */}
-                <div>
-                  <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest mb-1.5">
-                    {t("modal.institution")}
-                  </label>
-                  <input
-                    type="text"
-                    placeholder={t("modal.institutionPlaceholder")}
-                    className={`w-full px-4 py-2.5 rounded-2xl border text-sm bg-white dark:bg-white/5 text-editorial-dark dark:text-gray-100 focus:outline-none focus:ring-2 transition-all ${
-                      errors.institution
-                        ? "border-red-300 focus:ring-red-200"
-                        : "border-gold/25 focus:border-gold focus:ring-gold/10"
-                    }`}
-                    {...register("institution", {
-                      required: t("modal.errors.institutionRequired"),
-                    })}
-                    id="input-institution"
-                  />
-                  {errors.institution && (
-                    <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
-                      <AlertTriangle className="w-3.5 h-3.5" />{" "}
-                      {errors.institution.message}
-                    </p>
-                  )}
-                </div>
+              {orderMode === "full" && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* School or University */}
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest mb-1.5">
+                      {t("modal.institution")}
+                    </label>
+                    <input
+                      type="text"
+                      placeholder={t("modal.institutionPlaceholder")}
+                      className={`w-full px-4 py-2.5 rounded-2xl border text-sm bg-white dark:bg-white/5 text-editorial-dark dark:text-gray-100 focus:outline-none focus:ring-2 transition-all ${
+                        errors.institution
+                          ? "border-red-300 focus:ring-red-200"
+                          : "border-gold/25 focus:border-gold focus:ring-gold/10"
+                      }`}
+                      {...register("institution", {
+                        required:
+                          orderMode === "full"
+                            ? t("modal.errors.institutionRequired")
+                            : false,
+                      })}
+                      id="input-institution"
+                    />
+                    {errors.institution && (
+                      <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
+                        <AlertTriangle className="w-3.5 h-3.5" />{" "}
+                        {errors.institution.message}
+                      </p>
+                    )}
+                  </div>
 
-                {/* Class or Course */}
-                <div>
-                  <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest mb-1.5">
-                    {t("modal.group")}
-                  </label>
-                  <input
-                    type="text"
-                    placeholder={t("modal.groupPlaceholder")}
-                    className={`w-full px-4 py-2.5 rounded-2xl border text-sm bg-white dark:bg-white/5 text-editorial-dark dark:text-gray-100 focus:outline-none focus:ring-2 transition-all ${
-                      errors.group
-                        ? "border-red-300 focus:ring-red-200"
-                        : "border-gold/25 focus:border-gold focus:ring-gold/10"
-                    }`}
-                    {...register("group", {
-                      required: t("modal.errors.groupRequired"),
-                    })}
-                    id="input-group"
-                  />
-                  {errors.group && (
-                    <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
-                      <AlertTriangle className="w-3.5 h-3.5" />{" "}
-                      {errors.group.message}
-                    </p>
-                  )}
+                  {/* Class or Course */}
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest mb-1.5">
+                      {t("modal.group")}
+                    </label>
+                    <input
+                      type="text"
+                      placeholder={t("modal.groupPlaceholder")}
+                      className={`w-full px-4 py-2.5 rounded-2xl border text-sm bg-white dark:bg-white/5 text-editorial-dark dark:text-gray-100 focus:outline-none focus:ring-2 transition-all ${
+                        errors.group
+                          ? "border-red-300 focus:ring-red-200"
+                          : "border-gold/25 focus:border-gold focus:ring-gold/10"
+                      }`}
+                      {...register("group", {
+                        required:
+                          orderMode === "full"
+                            ? t("modal.errors.groupRequired")
+                            : false,
+                      })}
+                      id="input-group"
+                    />
+                    {errors.group && (
+                      <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
+                        <AlertTriangle className="w-3.5 h-3.5" />{" "}
+                        {errors.group.message}
+                      </p>
+                    )}
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* Product and Quantity Selectors inside form */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -682,127 +766,135 @@ export default function OrderModal({
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {/* Region Custom Dropdown */}
-                <div className="relative" ref={regionDropdownRef}>
-                  <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest mb-1.5">
-                    {t("modal.region")}
-                  </label>
+              {orderMode === "full" && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Region Custom Dropdown */}
+                  <div className="relative" ref={regionDropdownRef}>
+                    <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest mb-1.5">
+                      {t("modal.region")}
+                    </label>
 
-                  <input
-                    type="hidden"
-                    {...register("region", {
-                      required: t("modal.errors.regionRequired"),
-                    })}
-                  />
-
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setIsRegionDropdownOpen((prev) => !prev);
-                      setIsProductDropdownOpen(false);
-                    }}
-                    className={`w-full px-4 py-2.5 rounded-2xl border text-sm flex items-center justify-between text-left transition-all bg-white dark:bg-white/5 text-editorial-dark dark:text-gray-100 cursor-pointer shadow-xs ${
-                      errors.region
-                        ? "border-red-300 focus:ring-red-200"
-                        : isRegionDropdownOpen
-                          ? "border-gold ring-2 ring-gold/20"
-                          : "border-gold/25 hover:border-gold/50"
-                    }`}
-                    id="input-region-button"
-                  >
-                    <div className="flex items-center gap-2 min-w-0">
-                      <MapPin className="w-4 h-4 text-gold shrink-0" />
-                      <span
-                        className={`truncate ${
-                          watch("region")
-                            ? "font-medium"
-                            : "text-gray-400 dark:text-gray-500"
-                        }`}
-                      >
-                        {watch("region") || t("modal.regionPlaceholder")}
-                      </span>
-                    </div>
-                    <ChevronDown
-                      className={`w-4 h-4 text-gold transition-transform duration-200 shrink-0 ml-2 ${
-                        isRegionDropdownOpen ? "rotate-180" : ""
-                      }`}
+                    <input
+                      type="hidden"
+                      {...register("region", {
+                        required:
+                          orderMode === "full"
+                            ? t("modal.errors.regionRequired")
+                            : false,
+                      })}
                     />
-                  </button>
 
-                  <AnimatePresence>
-                    {isRegionDropdownOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, y: -6, scale: 0.98 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: -6, scale: 0.98 }}
-                        transition={{ duration: 0.15 }}
-                        className="absolute z-50 left-0 right-0 mt-1.5 max-h-56 overflow-y-auto rounded-2xl border border-gold/30 bg-white dark:bg-[#1a1a1a] shadow-2xl p-1.5 backdrop-blur-xl"
-                        id="region-dropdown-menu"
-                      >
-                        {REGIONS.map((reg) => {
-                          const isSelected = watch("region") === reg;
-                          return (
-                            <button
-                              key={reg}
-                              type="button"
-                              onClick={() => {
-                                setValue("region", reg, {
-                                  shouldValidate: true,
-                                });
-                                setIsRegionDropdownOpen(false);
-                              }}
-                              className={`w-full flex items-center justify-between px-3.5 py-2 rounded-xl text-left text-sm transition-all cursor-pointer ${
-                                isSelected
-                                  ? "bg-gold/15 dark:bg-gold/25 text-gold font-semibold"
-                                  : "hover:bg-gold/10 dark:hover:bg-white/5 text-editorial-dark dark:text-gray-100"
-                              }`}
-                            >
-                              <span>{reg}</span>
-                              {isSelected && (
-                                <Check className="w-4 h-4 text-gold shrink-0" />
-                              )}
-                            </button>
-                          );
-                        })}
-                      </motion.div>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsRegionDropdownOpen((prev) => !prev);
+                        setIsProductDropdownOpen(false);
+                      }}
+                      className={`w-full px-4 py-2.5 rounded-2xl border text-sm flex items-center justify-between text-left transition-all bg-white dark:bg-white/5 text-editorial-dark dark:text-gray-100 cursor-pointer shadow-xs ${
+                        errors.region
+                          ? "border-red-300 focus:ring-red-200"
+                          : isRegionDropdownOpen
+                            ? "border-gold ring-2 ring-gold/20"
+                            : "border-gold/25 hover:border-gold/50"
+                      }`}
+                      id="input-region-button"
+                    >
+                      <div className="flex items-center gap-2 min-w-0">
+                        <MapPin className="w-4 h-4 text-gold shrink-0" />
+                        <span
+                          className={`truncate ${
+                            watch("region")
+                              ? "font-medium"
+                              : "text-gray-400 dark:text-gray-500"
+                          }`}
+                        >
+                          {watch("region") || t("modal.regionPlaceholder")}
+                        </span>
+                      </div>
+                      <ChevronDown
+                        className={`w-4 h-4 text-gold transition-transform duration-200 shrink-0 ml-2 ${
+                          isRegionDropdownOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+
+                    <AnimatePresence>
+                      {isRegionDropdownOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -6, scale: 0.98 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: -6, scale: 0.98 }}
+                          transition={{ duration: 0.15 }}
+                          className="absolute z-50 left-0 right-0 mt-1.5 max-h-56 overflow-y-auto rounded-2xl border border-gold/30 bg-white dark:bg-[#1a1a1a] shadow-2xl p-1.5 backdrop-blur-xl"
+                          id="region-dropdown-menu"
+                        >
+                          {REGIONS.map((reg) => {
+                            const isSelected = watch("region") === reg;
+                            return (
+                              <button
+                                key={reg}
+                                type="button"
+                                onClick={() => {
+                                  setValue("region", reg, {
+                                    shouldValidate: true,
+                                  });
+                                  setIsRegionDropdownOpen(false);
+                                }}
+                                className={`w-full flex items-center justify-between px-3.5 py-2 rounded-xl text-left text-sm transition-all cursor-pointer ${
+                                  isSelected
+                                    ? "bg-gold/15 dark:bg-gold/25 text-gold font-semibold"
+                                    : "hover:bg-gold/10 dark:hover:bg-white/5 text-editorial-dark dark:text-gray-100"
+                                }`}
+                              >
+                                <span>{reg}</span>
+                                {isSelected && (
+                                  <Check className="w-4 h-4 text-gold shrink-0" />
+                                )}
+                              </button>
+                            );
+                          })}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+
+                    {errors.region && (
+                      <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
+                        <AlertTriangle className="w-3.5 h-3.5" />{" "}
+                        {errors.region.message}
+                      </p>
                     )}
-                  </AnimatePresence>
+                  </div>
 
-                  {errors.region && (
-                    <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
-                      <AlertTriangle className="w-3.5 h-3.5" />{" "}
-                      {errors.region.message}
-                    </p>
-                  )}
+                  {/* Detailed Address */}
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest mb-1.5">
+                      {t("modal.address")}
+                    </label>
+                    <input
+                      type="text"
+                      placeholder={t("modal.addressPlaceholder")}
+                      className={`w-full px-4 py-2.5 rounded-2xl border text-sm bg-white dark:bg-white/5 text-editorial-dark dark:text-gray-100 focus:outline-none focus:ring-2 transition-all ${
+                        errors.address
+                          ? "border-red-300 focus:ring-red-200"
+                          : "border-gold/25 focus:border-gold focus:ring-gold/10"
+                      }`}
+                      {...register("address", {
+                        required:
+                          orderMode === "full"
+                            ? t("modal.errors.addressRequired")
+                            : false,
+                      })}
+                      id="input-address"
+                    />
+                    {errors.address && (
+                      <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
+                        <AlertTriangle className="w-3.5 h-3.5" />{" "}
+                        {errors.address.message}
+                      </p>
+                    )}
+                  </div>
                 </div>
-
-                {/* Detailed Address */}
-                <div>
-                  <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest mb-1.5">
-                    {t("modal.address")}
-                  </label>
-                  <input
-                    type="text"
-                    placeholder={t("modal.addressPlaceholder")}
-                    className={`w-full px-4 py-2.5 rounded-2xl border text-sm bg-white dark:bg-white/5 text-editorial-dark dark:text-gray-100 focus:outline-none focus:ring-2 transition-all ${
-                      errors.address
-                        ? "border-red-300 focus:ring-red-200"
-                        : "border-gold/25 focus:border-gold focus:ring-gold/10"
-                    }`}
-                    {...register("address", {
-                      required: t("modal.errors.addressRequired"),
-                    })}
-                    id="input-address"
-                  />
-                  {errors.address && (
-                    <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
-                      <AlertTriangle className="w-3.5 h-3.5" />{" "}
-                      {errors.address.message}
-                    </p>
-                  )}
-                </div>
-              </div>
+              )}
 
               {/* Extra comments */}
               <div>
@@ -843,6 +935,11 @@ export default function OrderModal({
                     <>
                       <Loader2 className="w-4 h-4 animate-spin" />{" "}
                       {t("modal.submitting")}
+                    </>
+                  ) : orderMode === "quick" ? (
+                    <>
+                      <Zap className="w-4 h-4 fill-white" />{" "}
+                      {t("modal.quickOrderSubmit")}
                     </>
                   ) : (
                     <>

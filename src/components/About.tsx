@@ -40,7 +40,7 @@ export default function About() {
   return (
     <section
       id="biz-haqimizda"
-      className="py-24 bg-white dark:bg-editorial-dark border-b border-gold/10 transition-colors duration-300"
+      className="py-12 sm:py-20 bg-white dark:bg-editorial-dark border-b border-gold/10 transition-colors duration-300"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}

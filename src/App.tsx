@@ -23,6 +23,7 @@ import TemplatePage from "./components/TemplatePage";
 import MobileBottomNav from "./components/MobileBottomNav";
 import RibbonConstructor from "./components/RibbonConstructor";
 import DiscountCalculator from "./components/DiscountCalculator";
+import OrderSteps from "./components/OrderSteps";
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -112,6 +113,9 @@ export default function App() {
 
         {/* Products Catalogue */}
         <Products onOrderProduct={handleOrderProduct} />
+
+        {/* 3-qadamda oson buyurtma berish infografikasi */}
+        <OrderSteps onOpenOrderModal={handleOpenOrderModal} />
 
         {/* Sinf uchun chegirma kalkulyatori */}
         <DiscountCalculator onOrderGroup={handleOrderProduct} />

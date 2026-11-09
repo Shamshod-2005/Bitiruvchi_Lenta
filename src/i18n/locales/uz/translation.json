@@ -177,6 +177,10 @@
   },
   "modal": {
     "title": "Rasmiylashtirish",
+    "quickOrderTab": "Tezkor buyurtma (10 soniya)",
+    "fullOrderTab": "To'liq buyurtma",
+    "quickOrderHint": "Faqat ismingiz va telefon raqamingizni qoldiring, 5 daqiqada sizga qo'ng'iroq qilib barcha tafsilotlarni kelishib olamiz!",
+    "quickOrderSubmit": "Tezkor buyurtma yuborish",
     "description": "Lenta buyurtma qilish uchun quyidagi ma'lumotlarni to'ldiring",
     "fullName": "Ism familiyangiz *",
     "phone": "Telefon raqamingiz *",
@@ -243,5 +247,23 @@
     "order": "Buyurtma",
     "gallery": "Galereya",
     "contact": "Aloqa"
+  },
+  "orderSteps": {
+    "eyebrow": "Qulay va oson jarayon",
+    "title": "Qanday buyurtma beriladi?",
+    "description": "Bor-yo'g'i 3 oddiy qadamda butun sinf yoki kursingiz uchun esdalik lentalariga buyurtma bering",
+    "step1": {
+      "title": "1. Dizayn va rangni tanlang",
+      "desc": "Katalogimizdan yoki 14 xil zamonaviy shablonlar orasidan o'zingizga ma'qul rang va yozuv uslubini tanlang."
+    },
+    "step2": {
+      "title": "2. Ro'yxatni yuboring",
+      "desc": "Bitiruvchilar ism-familiyasi ro'yxatini sayt yoki Telegram orqali bizga qulay shaklda yuborasiz."
+    },
+    "step3": {
+      "title": "3. 1-2 kunda qabul qiling",
+      "desc": "Buyurtmangiz yuqori sifatda tayyorlanib, butun O'zbekiston bo'ylab eng tezkor pochta/kuryer orqali yetkaziladi."
+    },
+    "cta": "Hozir buyurtma berish"
   }
 }

@@ -82,7 +82,7 @@ export default function Products({ onOrderProduct }: ProductsProps) {
   return (
     <section
       id="mahsulotlar"
-      className="py-24 bg-warm-bg/40 dark:bg-editorial-dark border-t border-b border-gold/10 transition-colors duration-300"
+      className="py-12 sm:py-20 bg-white dark:bg-editorial-dark border-b border-gold/10 transition-colors duration-300"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
@@ -160,6 +160,8 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                       <img
                         src={product.image}
                         alt={product.name}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                         referrerPolicy="no-referrer"
                       />

@@ -26,7 +26,7 @@ export default function Gallery() {
   return (
     <section
       id="galereya"
-      className="py-24 bg-warm-bg/20 dark:bg-editorial-dark border-b border-gold/10 transition-colors duration-300"
+      className="py-12 sm:py-20 bg-warm-bg/40 dark:bg-white/5 border-b border-gold/10 transition-colors duration-300"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
@@ -78,6 +78,8 @@ export default function Gallery() {
                   <img
                     src={item.image}
                     alt={item.title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out"
                     referrerPolicy="no-referrer"
                   />

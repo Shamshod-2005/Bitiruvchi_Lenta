@@ -17,7 +17,7 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-24 bg-warm-bg/40 dark:bg-editorial-dark border-b border-gold/10 transition-colors duration-300">
+    <section id="faq" className="py-12 sm:py-20 bg-warm-bg/40 dark:bg-editorial-dark border-b border-gold/10 transition-colors duration-300">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
