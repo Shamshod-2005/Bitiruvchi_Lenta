@@ -152,7 +152,7 @@ export default function Navbar({ onOpenOrderModal }: NavbarProps) {
             <ThemeToggleButton
               theme={theme}
               toggleTheme={toggleTheme}
-              className="hidden sm:flex"
+              className="flex"
             />
 
             <button

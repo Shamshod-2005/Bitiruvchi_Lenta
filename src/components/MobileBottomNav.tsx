@@ -77,48 +77,34 @@ export default function MobileBottomNav({
         <button
           type="button"
           onClick={() => scrollToSection("bosh-sahifa", "home")}
-          className={`flex-1 flex flex-col items-center justify-center py-1 transition-colors relative ${
+          className={`flex-1 flex flex-col items-center justify-center py-1 transition-colors relative cursor-pointer ${
             activeTab === "home"
-              ? "text-gold font-bold"
+              ? "text-gold font-bold scale-105"
               : "text-gray-500 dark:text-gray-400 hover:text-gold/80"
           }`}
           aria-label={t("bottomNav.home")}
         >
           <Home className="w-5 h-5 transition-transform active:scale-90" />
-          <span className="text-[10px] mt-0.5 tracking-tight">
+          <span className="text-[10px] mt-0.5 tracking-tight font-medium">
             {t("bottomNav.home")}
           </span>
-          {activeTab === "home" && (
-            <motion.div
-              layoutId="mobileNavIndicator"
-              className="absolute -bottom-1 w-1.5 h-1.5 rounded-full bg-gold shadow-[0_0_8px_rgba(212,175,55,0.8)]"
-              transition={{ type: "spring", stiffness: 400, damping: 30 }}
-            />
-          )}
         </button>
 
         {/* 2. Shablonlar */}
         <button
           type="button"
           onClick={() => scrollToSection("shablonlar", "templates")}
-          className={`flex-1 flex flex-col items-center justify-center py-1 transition-colors relative ${
+          className={`flex-1 flex flex-col items-center justify-center py-1 transition-colors relative cursor-pointer ${
             activeTab === "templates"
-              ? "text-gold font-bold"
+              ? "text-gold font-bold scale-105"
               : "text-gray-500 dark:text-gray-400 hover:text-gold/80"
           }`}
           aria-label={t("bottomNav.templates")}
         >
           <Sparkles className="w-5 h-5 transition-transform active:scale-90" />
-          <span className="text-[10px] mt-0.5 tracking-tight">
+          <span className="text-[10px] mt-0.5 tracking-tight font-medium">
             {t("bottomNav.templates")}
           </span>
-          {activeTab === "templates" && (
-            <motion.div
-              layoutId="mobileNavIndicator"
-              className="absolute -bottom-1 w-1.5 h-1.5 rounded-full bg-gold shadow-[0_0_8px_rgba(212,175,55,0.8)]"
-              transition={{ type: "spring", stiffness: 400, damping: 30 }}
-            />
-          )}
         </button>
 
         {/* 3. Markaziy ko'tarilgan ASOSIY BUYURTMA TUGMASI (Raised Center Button) */}
@@ -143,48 +129,34 @@ export default function MobileBottomNav({
         <button
           type="button"
           onClick={() => scrollToSection("galereya", "gallery")}
-          className={`flex-1 flex flex-col items-center justify-center py-1 transition-colors relative ${
+          className={`flex-1 flex flex-col items-center justify-center py-1 transition-colors relative cursor-pointer ${
             activeTab === "gallery"
-              ? "text-gold font-bold"
+              ? "text-gold font-bold scale-105"
               : "text-gray-500 dark:text-gray-400 hover:text-gold/80"
           }`}
           aria-label={t("bottomNav.gallery")}
         >
           <ImageIcon className="w-5 h-5 transition-transform active:scale-90" />
-          <span className="text-[10px] mt-0.5 tracking-tight">
+          <span className="text-[10px] mt-0.5 tracking-tight font-medium">
             {t("bottomNav.gallery")}
           </span>
-          {activeTab === "gallery" && (
-            <motion.div
-              layoutId="mobileNavIndicator"
-              className="absolute -bottom-1 w-1.5 h-1.5 rounded-full bg-gold shadow-[0_0_8px_rgba(212,175,55,0.8)]"
-              transition={{ type: "spring", stiffness: 400, damping: 30 }}
-            />
-          )}
         </button>
 
         {/* 5. Aloqa */}
         <button
           type="button"
           onClick={() => scrollToSection("kontakt", "contact")}
-          className={`flex-1 flex flex-col items-center justify-center py-1 transition-colors relative ${
+          className={`flex-1 flex flex-col items-center justify-center py-1 transition-colors relative cursor-pointer ${
             activeTab === "contact"
-              ? "text-gold font-bold"
+              ? "text-gold font-bold scale-105"
               : "text-gray-500 dark:text-gray-400 hover:text-gold/80"
           }`}
           aria-label={t("bottomNav.contact")}
         >
           <PhoneCall className="w-5 h-5 transition-transform active:scale-90" />
-          <span className="text-[10px] mt-0.5 tracking-tight">
+          <span className="text-[10px] mt-0.5 tracking-tight font-medium">
             {t("bottomNav.contact")}
           </span>
-          {activeTab === "contact" && (
-            <motion.div
-              layoutId="mobileNavIndicator"
-              className="absolute -bottom-1 w-1.5 h-1.5 rounded-full bg-gold shadow-[0_0_8px_rgba(212,175,55,0.8)]"
-              transition={{ type: "spring", stiffness: 400, damping: 30 }}
-            />
-          )}
         </button>
       </div>
     </div>

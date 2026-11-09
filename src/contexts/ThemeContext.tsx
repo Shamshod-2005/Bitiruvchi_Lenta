@@ -16,6 +16,7 @@ export interface ThemeContextValue {
 
 const THEME_STORAGE_KEY = "theme";
 const LAST_PHASE_KEY = "theme_time_phase";
+const USER_MANUAL_KEY = "theme_user_manual";
 
 /**
  * 07:00 dan 19:00 gacha kunduzgi (day), qolgan vaqtda tungi (night) faza
@@ -35,25 +36,21 @@ function getInitialTheme(): Theme {
   }
 
   const currentPhase = getTimePhase();
-  const storedPhase = window.localStorage.getItem(LAST_PHASE_KEY);
   const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
+  const storedPhase = window.localStorage.getItem(LAST_PHASE_KEY);
+  const isManual = window.localStorage.getItem(USER_MANUAL_KEY) === "true";
 
-  // Agar vaqt fazasi o'zgargan bo'lsa (masalan 19:00 dan keyin yoki 07:00 dan keyin birinchi marta kirganda)
-  if (storedPhase !== currentPhase) {
-    const autoTheme = getThemeByTime();
-    window.localStorage.setItem(LAST_PHASE_KEY, currentPhase);
-    window.localStorage.setItem(THEME_STORAGE_KEY, autoTheme);
-    return autoTheme;
-  }
-
-  // Agar foydalanuvchi joriy faza davomida qo'lda o'zgartirgan bo'lsa, o'sha tanlovni olamiz
-  if (storedTheme === "light" || storedTheme === "dark") {
+  // Agar foydalanuvchi joriy faza davomida o'zi qo'lda bosgan bo'lsa, tanlovini saqlaymiz
+  if (isManual && storedPhase === currentPhase && (storedTheme === "light" || storedTheme === "dark")) {
     return storedTheme;
   }
 
-  // Standart holatda vaqt bo'yicha
+  // Aks holda vaqt bo'yicha to'liq avtomatik belgilanadi (kunduzi: light, kechasi: dark)
+  const autoTheme = getThemeByTime();
   window.localStorage.setItem(LAST_PHASE_KEY, currentPhase);
-  return getThemeByTime();
+  window.localStorage.setItem(THEME_STORAGE_KEY, autoTheme);
+  window.localStorage.removeItem(USER_MANUAL_KEY);
+  return autoTheme;
 }
 
 export const ThemeContext = createContext<ThemeContextValue | undefined>(
@@ -95,8 +92,9 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   const toggleTheme = useCallback(() => {
     setTheme((prev) => {
       const next = prev === "dark" ? "light" : "dark";
-      // Joriy fazani saqlab qo'yamiz, shunda yangi faza kelguncha foydalanuvchi tanlovi saqlanadi
       window.localStorage.setItem(LAST_PHASE_KEY, getTimePhase());
+      window.localStorage.setItem(THEME_STORAGE_KEY, next);
+      window.localStorage.setItem(USER_MANUAL_KEY, "true");
       return next;
     });
   }, []);
