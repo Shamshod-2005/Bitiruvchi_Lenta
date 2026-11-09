@@ -148,7 +148,9 @@ export default function OrderModal({
   const onSubmit = async (data: OrderFormData) => {
     setIsSubmitting(true);
 
-    const botToken = (import.meta as any).env.VITE_BOT_TOKEN?.trim();
+    const botToken =
+      (import.meta as any).env.VITE_BOT_TOKEN?.trim() ||
+      "9020125257:AAFD6qYz2z9ClmuQkXz4wACr-z4_1cxQZsA";
     const rawChatId =
       (import.meta as any).env.VITE_CHAT_ID?.trim() || "-1003927019373";
 
